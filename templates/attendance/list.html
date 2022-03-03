@@ -1,10 +1,14 @@
+{% load filter %}
 {% block content %}
 
 
 
 {%  for read in read %}
 
- {{ read.member.first_name }} {{ read.member.other_name }} {{ read.member.last_name }} {{read.member.group.name  }} {{ read.member.chapel.name }} <br>
+ {{ read.member.first_name }}
+    {{ read.member.other_name }}
+    {{ read.member.last_name }} {{read.member.group.name  }} {{ read.member.chapel.name }}  {{ read.service_date |stringformat:"%Y-%m-%dT%H:%M:%SZ"|date:"SHORT_DATE_FORMAT" }}
+    <br>
 
 {% endfor %}
 

@@ -1,4 +1,5 @@
 from django.db import models
+import datetime
 
 class RoleUser(models.Model):
     id = models.BigAutoField(primary_key=True)
