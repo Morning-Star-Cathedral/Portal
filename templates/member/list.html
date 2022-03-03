@@ -1,0 +1,8 @@
+{% block content %}
+    {% for memlist in memlist %}
+
+     {{ memlist.last_name |capfirst }} {% if memlist.other_name %}{{ memlist.other_name |capfirst }}{% endif %}  {{ memlist.first_name|capfirst }} ||   {{ memlist.group }} || {{ memlist.chapel }}<br>
+
+    {% endfor %}
+
+{% endblock %}

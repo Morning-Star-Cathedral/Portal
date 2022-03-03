@@ -1,0 +1,11 @@
+{% block content %}
+
+
+
+{%  for read in read %}
+
+ {{ read.member.first_name }} {{ read.member.other_name }} {{ read.member.last_name }} {{read.member.group.name  }} {{ read.member.chapel.name }} <br>
+
+{% endfor %}
+
+{% endblock %}
