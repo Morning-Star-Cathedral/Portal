@@ -165,7 +165,7 @@ class Attendances(models.Model):
 class AttendanceSummaries(models.Model):
     id = models.BigAutoField(primary_key=True)
     weekday = models.CharField(max_length=255)
-    attendance_date = models.DateTimeField(max_length=255)
+    attendance_date = models.DateTimeField()
     group_id = models.PositiveBigIntegerField()
     total_present = models.CharField(max_length=255)
     created_at = models.DateTimeField(blank=True, null=True)

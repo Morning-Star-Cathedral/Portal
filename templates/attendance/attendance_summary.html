@@ -1,6 +1,6 @@
 {% block content %}
     {% for att_summary in att_summary %}
-        {{ att_summary.group_id }}
+        {{ att_summary.group_id }} {{ att_summary.weekday }}{{ att_summary.attendance_date }}<br>
 
     {% endfor %}
 
