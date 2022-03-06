@@ -1,0 +1,7 @@
+{% block content %}
+    {% for db_user in db_user %}
+
+      {% if db_user.title %}  {{ db_user.title }} {% endif %}{{ db_user.name|capfirst }} {{ db_user.groups.name }} <br>
+    {% endfor %}
+
+{% endblock %}

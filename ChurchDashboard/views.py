@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from ChurchDashboard.models import AttendanceSummaries,Attendances,Members,Groups,Chapels
+from ChurchDashboard.models import AttendanceSummaries,Attendances,Members,Groups,Chapels, DBUser
 
 # Create your views here.
 #list members oredered by chapel
@@ -44,3 +44,15 @@ def chapel_list(request):
         'chaps' : chaps
     }
     return render(request,'chapels/list.html', context)
+
+
+# DB USer list
+def db_user_list(request):
+    db_user = DBUser.objects.all().order_by('created_at')
+    context = {
+        'db_user': db_user
+    }
+    return  render (request,'DbUser/Dbuser.html', context)
+
+# Details View
+
