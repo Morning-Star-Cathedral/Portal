@@ -1,4 +1,4 @@
-from djnago.db import models
+from django.db import models
 
 
 class Chapels(models.Model):
@@ -143,26 +143,10 @@ class DBUser(models.Model):
 
 
 
-class AttendanceSummaries(models.Model):
-    id = models.BigAutoField(primary_key=True)
-    weekday = models.CharField(max_length=255)
-    attendance_date = models.DateTimeField()
-    group = models.ForeignKey('Groups', models.DO_NOTHING)
-    total_present = models.CharField(max_length=255)
-    created_at = models.DateTimeField(blank=True, null=True)
-    updated_at = models.DateTimeField(blank=True, null=True)
-    total_absent = models.CharField(max_length=255)
-    present_percentage = models.CharField(max_length=255)
-
-    class Meta:
-        managed = False
-        db_table = 'attendance_summaries'
-
-
 class RoleUser(models.Model):
     id = models.BigAutoField(primary_key=True)
     role = models.ForeignKey('Roles', models.DO_NOTHING)
-    user = models.ForeignKey('Users', models.DO_NOTHING)
+    user = models.ForeignKey('DBUser', models.DO_NOTHING)
     created_at = models.DateTimeField(blank=True, null=True)
     updated_at = models.DateTimeField(blank=True, null=True)
 
@@ -186,3 +170,19 @@ class Attendances(models.Model):
     class Meta:
         managed = False
         db_table = 'attendances'
+
+
+class AttendanceSummaries(models.Model):
+    id = models.BigAutoField(primary_key=True)
+    weekday = models.CharField(max_length=255)
+    attendance_date = models.DateTimeField()
+    group = models.ForeignKey('Groups', models.DO_NOTHING)
+    total_present = models.CharField(max_length=255)
+    created_at = models.DateTimeField(blank=True, null=True)
+    updated_at = models.DateTimeField(blank=True, null=True)
+    total_absent = models.CharField(max_length=255)
+    present_percentage = models.CharField(max_length=255)
+
+    class Meta:
+        managed = False
+        db_table = 'attendance_summaries'
