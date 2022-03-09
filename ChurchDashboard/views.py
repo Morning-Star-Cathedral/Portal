@@ -1,6 +1,7 @@
 from django.shortcuts import get_object_or_404, render
 from ChurchDashboard.models import AttendanceSummaries,Attendances,Members,Groups,Chapels, DBUser
 from django.db.models import Count
+from django.db.models import Q
 
 
 
@@ -96,9 +97,9 @@ def chap_details(request, id):
     return render (request,'chapels/details3.html', context)
 
 # Details View group
-def groups_details(request, id):
-    grodetails = get_object_or_404(Groups,id =id)
-    db_mem = Members.objects.filter(groups__id =id)
+def groups_details(request, pk):
+    grodetails = get_object_or_404(Groups,pk =pk)
+    db_mem = Members.objects.filter(groups__pk =pk)
     context ={
         'grodetails':grodetails,
         'db_mem':db_mem
