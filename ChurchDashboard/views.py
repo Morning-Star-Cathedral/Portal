@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from ChurchDashboard.models import AttendanceSummaries,Attendances,Members,Groups,Chapels, DBUser
+from django.db.models import Count
 
 # Create your views here.
 #list members oredered by chapel
@@ -7,7 +8,7 @@ def index_page(request):
     memcounts = Members.objects.all().count()
     groupcount = Groups.objects.all().count()
     usercount = DBUser.objects.all().count()
-    chapscount = Chapels.objects.all.count()
+    chapscount = Chapels.objects.all().count()
 
     context = {
         'memcounts':memcounts,
