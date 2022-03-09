@@ -1,6 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 from ChurchDashboard.models import AttendanceSummaries,Attendances,Members,Groups,Chapels, DBUser
 from django.db.models import Count
+
+
 
 # Create your views here.
 #list members oredered by chapel
@@ -9,12 +11,14 @@ def index_page(request):
     groupcount = Groups.objects.all().count()
     usercount = DBUser.objects.all().count()
     chapscount = Chapels.objects.all().count()
+    mil = Members.objects.all().order_by('-id')[:10]
 
     context = {
         'memcounts':memcounts,
         'groupcount':groupcount,
         'usercount':usercount,
-        'chapscount':chapscount
+        'chapscount':chapscount,
+        'mil':mil
     }
     return render(request,'index.html',context)
 
@@ -71,5 +75,43 @@ def db_user_list(request):
     }
     return  render (request,'DbUser/Dbuser.html', context)
 
-# Details View
+# Details View Members
+
+def members_details(request, id):
+    mem_det = get_object_or_404(Members,id = id)
+    context = {
+        'mem_det':mem_det
+    }
+    return render(request,'member/details.html',context)
+
+# Details View Chapels
+
+def chap_details(request, id):
+    chadetails = get_object_or_404(Chapels,id=id)
+    db_users = DBUser.objects.filter(chapel__id =id)
+    context = {
+        'chadetails':chadetails,
+        'db_users':db_users
+    }
+    return render (request,'chapels/details3.html', context)
+
+# Details View group
+def groups_details(request, id):
+    grodetails = get_object_or_404(Groups,id =id)
+    db_mem = Members.objects.filter(groups__id =id)
+    context ={
+        'grodetails':grodetails,
+        'db_mem':db_mem
+    }
+    return render(request, 'groups/details3.html', context)
+
+def  db_details(request, id):
+    db_details = get_object_or_404(DBUser,id =id)
+    mens = Members.objects.filter(dbuser__id=id)
+    context = {
+        'db_details':db_details,
+        'mens':mens
+    }
+    return render(request, 'DbUser/details.html', context)
+
 

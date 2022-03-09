@@ -1,7 +1,9 @@
 {% block content %}
 
-{{ memcounts }} {{ groupcount }} {{ usercount }} {{ chapscount }}
-
+{{ memcounts }} {{ groupcount }} {{ usercount }} {{ chapscount }}<br>
+   {% for mil in mil %}
+    {{ mil.last_name }} {{ mil.first_name }}   {{ mil.chapel.name }}  {{ mil.group.name }}<br>
+{% endfor %}
 
 
 {% endblock %}
