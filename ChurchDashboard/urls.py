@@ -7,7 +7,12 @@ urlpatterns = [
     path('att_summ/',attendance_summmaries_list, name = 'list_summary_attendance_url'),
     path('groups/',groups_list, name = 'list_group_url'),
     path('chapels/',chapel_list, name ='list_chapel_url'),
-    path('grouplead/',db_user_list, name='list_group_url'),
+    path('grouplead/',db_user_list, name='list_grouplead_url'),
+    path('members/<int:id>/',members_details,name='details_member_urls'),
+    path('groups/<int:id>/', groups_details, name = 'details_group_urls'),
+    path('chapels/<int:id>/',chap_details, name = 'details_chapels_urls'),
+    path('grouplead/<int:id>/',db_details, name = 'details_grouplead_urls'),
+
 
 
 ]
