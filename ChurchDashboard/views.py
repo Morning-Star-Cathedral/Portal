@@ -3,6 +3,22 @@ from ChurchDashboard.models import AttendanceSummaries,Attendances,Members,Group
 
 # Create your views here.
 #list members oredered by chapel
+def index_page(request):
+    memcounts = Members.objects.all().count()
+    groupcount = Groups.objects.all().count()
+    usercount = DBUser.objects.all().count()
+    chapscount = Chapels.objects.all.count()
+
+    context = {
+        'memcounts':memcounts,
+        'groupcount':groupcount,
+        'usercount':usercount,
+        'chapscount':chapscount
+    }
+    return render(request,'index.html',context)
+
+
+
 def list_view_member(request):
     memlist = Members.objects.all().order_by('chapel')
     context = {
