@@ -2,10 +2,12 @@ from rest_framework import serializers
 from .models import *
 
 class DbUserSerializer(serializers.ModelSerializer):
-    model = DBUser
-    fields = (
+
+    class Meta:
+        model = DBUser
+        fields = (
         'title', 'name','chapel','group','email',
-    )
+               )
 
 
 
