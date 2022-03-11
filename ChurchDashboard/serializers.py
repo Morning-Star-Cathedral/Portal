@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from .models import *
 
-class DbUserSerializer(serializers.ModelSerialier):
+class DbUserSerializer(serializers.ModelSerializer):
     model = DBUser
     fields = (
         'title', 'name','chapel','group','email',
@@ -9,7 +9,7 @@ class DbUserSerializer(serializers.ModelSerialier):
 
 
 
-class ChapelDbuserSerializer(serializers.ModelSerialier):
+class ChapelDbuserSerializer(serializers.ModelSerializer):
     db_user = DbUserSerializer(many=True, read_only=True)
 
     class Meta:

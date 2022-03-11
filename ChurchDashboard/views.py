@@ -120,12 +120,14 @@ def  db_details(request, id):
 
 # API VIEWS
 
-class DbUserListAPi(generics.LISTAPIView):
+#uSER lIST API
+class DbUserListAPi(generics.ListAPIView):
     queryset = DBUser.objects.all()
     serializer_class = DbUserSerializer
 
 
-class ChapelListAPi(generics.LISTAPIView):
+#CHAPEL LIST apI
+class ChapelListAPi(generics.ListAPIView):
     queryset = Chapels.objects.all()
     serializer_class = ChapelDbuserSerializer
 

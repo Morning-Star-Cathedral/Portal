@@ -13,6 +13,9 @@ urlpatterns = [
     path('chapels/<int:id>/',chap_details, name = 'details_chapels_urls'),
     path('grouplead/<int:id>/',db_details, name = 'details_grouplead_urls'),
 
+    #API URLS
+    path('zzdbuserzz/',DbUserListAPi.as_view()),
+
 
 
 ]
