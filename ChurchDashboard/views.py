@@ -2,6 +2,8 @@ from django.shortcuts import get_object_or_404, render
 from ChurchDashboard.models import AttendanceSummaries,Attendances,Members,Groups,Chapels, DBUser
 from django.db.models import Count
 from django.db.models import Q
+from rest_framework import generics
+from .serializers import DbUserSerializer,ChapelDbuserSerializer
 
 
 
@@ -115,4 +117,15 @@ def  db_details(request, id):
     }
     return render(request, 'DbUser/details.html', context)
 
+
+# API VIEWS
+
+class DbUserListAPi(generics.LISTAPIView):
+    queryset = DBUser.objects.all()
+    serializer_class = DbUserSerializer
+
+
+class ChapelListAPi(generics.LISTAPIView):
+    queryset = Chapels.objects.all()
+    serializer_class = ChapelDbuserSerializer
 
