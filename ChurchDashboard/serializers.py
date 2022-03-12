@@ -31,3 +31,12 @@ class ChapelDbuserSerializer(serializers.ModelSerializer):
     class Meta:
         model = Chapels
         fields = ('id', 'name', 'user_chapel')
+
+
+class ChapelMemberSerializer(serializers.ModelSerializer):
+    chapel_members = MemSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = Chapels
+        fields = ('id', 'name', 'chapel_members')
+

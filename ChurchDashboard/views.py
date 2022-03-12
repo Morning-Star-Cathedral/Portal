@@ -3,7 +3,7 @@ from ChurchDashboard.models import AttendanceSummaries, Attendances, Members, Gr
 from django.db.models import Count
 from django.db.models import Q
 from rest_framework import generics
-from .serializers import DbUserSerializer, ChapelDbuserSerializer, GroupSerializer
+from .serializers import DbUserSerializer, ChapelDbuserSerializer, GroupSerializer, ChapelMemberSerializer
 
 
 # Create your views here.
@@ -140,3 +140,8 @@ class ChapelListAPi(generics.ListAPIView):
 class GroupsApi(generics.ListAPIView):
     queryset = Groups.objects.all()
     serializer_class = GroupSerializer
+
+
+class ChapelMemberListAPI(generics.ListAPIView):
+    queryset = Chapels.objects.all()
+    serializer_class = ChapelMemberSerializer
