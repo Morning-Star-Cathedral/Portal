@@ -15,6 +15,7 @@ urlpatterns = [
 
     #API URLS
     path('zzdbuserzz/',DbUserListAPi.as_view()),
+    path('amchapszzz/',ChapelListAPi.as_view()),
 
 
 
