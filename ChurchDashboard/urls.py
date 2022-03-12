@@ -16,7 +16,7 @@ urlpatterns = [
 
     # API URLS
     path('zzdbuserzz/', DbUserListAPi.as_view()),
-    path('amchapszzz/', ChapelListAPi.as_view()),
+    path('amchapszzz/', ChapelListAPi.as_view(), name='CHAPEL_LIST_API'),
     path('livedgroupzz/', GroupsApi.as_view()),
 
 ]
