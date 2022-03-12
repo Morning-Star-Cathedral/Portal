@@ -50,8 +50,8 @@ class Members(models.Model):
     other_name = models.CharField(max_length=255, blank=True, null=True)
     title = models.CharField(max_length=255, blank=True, null=True)
     sex = models.CharField(max_length=6, blank=True, null=True)
-    chapel = models.ForeignKey(Chapels, models.DO_NOTHING)
-    group = models.ForeignKey(Groups, models.DO_NOTHING)
+    chapel = models.ForeignKey(Chapels, models.DO_NOTHING, related_name='chapel_members')
+    group = models.ForeignKey(Groups, models.DO_NOTHING, related_name='group_members')
     dob = models.DateTimeField(blank=True, null=True)
     phone_number = models.CharField(unique=True, max_length=255)
     whatsapp_number = models.CharField(max_length=255, blank=True, null=True)
@@ -104,9 +104,6 @@ class PersonalAccessTokens(models.Model):
         db_table = 'personal_access_tokens'
 
 
-
-
-
 class Roles(models.Model):
     id = models.BigAutoField(primary_key=True)
     name = models.CharField(max_length=255)
@@ -126,8 +123,8 @@ class DBUser(models.Model):
     name = models.CharField(max_length=255)
     email = models.CharField(unique=True, max_length=255)
     title = models.CharField(max_length=255, blank=True, null=True)
-    chapel = models.ForeignKey(Chapels, models.DO_NOTHING)
-    group = models.ForeignKey(Groups, models.DO_NOTHING)
+    chapel = models.ForeignKey(Chapels, models.DO_NOTHING, related_name='user_chapel')
+    group = models.ForeignKey(Groups, models.DO_NOTHING, related_name= 'user_groups')
     email_verified_at = models.DateTimeField(blank=True, null=True)
     password = models.CharField(max_length=255)
     remember_token = models.CharField(max_length=100, blank=True, null=True)
@@ -142,7 +139,6 @@ class DBUser(models.Model):
         return self.name
 
 
-
 class RoleUser(models.Model):
     id = models.BigAutoField(primary_key=True)
     role = models.ForeignKey('Roles', models.DO_NOTHING)
@@ -155,10 +151,9 @@ class RoleUser(models.Model):
         db_table = 'role_user'
 
 
-
 class Attendances(models.Model):
     id = models.BigAutoField(primary_key=True)
-    member = models.ForeignKey('Members', models.DO_NOTHING)
+    member = models.ForeignKey('Members', models.DO_NOTHING, related_name='mems')
     is_present = models.IntegerField()
     reason = models.CharField(max_length=17, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
@@ -176,7 +171,7 @@ class AttendanceSummaries(models.Model):
     id = models.BigAutoField(primary_key=True)
     weekday = models.CharField(max_length=255)
     attendance_date = models.DateTimeField()
-    group = models.ForeignKey('Groups', models.DO_NOTHING)
+    group = models.ForeignKey('Groups', models.DO_NOTHING, related_name='grouped')
     total_present = models.CharField(max_length=255)
     created_at = models.DateTimeField(blank=True, null=True)
     updated_at = models.DateTimeField(blank=True, null=True)

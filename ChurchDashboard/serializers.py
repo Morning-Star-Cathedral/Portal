@@ -1,27 +1,33 @@
 from rest_framework import serializers
 from .models import *
 
-class DbUserSerializer(serializers.ModelSerializer):
 
+class MemSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Members
+        fields = ('title', 'first_name', 'other_name', 'last_name', 'sex', 'chapel', 'group', 'dob', 'phone_number',
+                  'whatsapp_number', 'other_phone_number', 'area_of_residence', 'gps_address',)
+
+
+class GroupSerializer(serializers.ModelSerializer):
+    group_members = MemSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = Groups
+        fields = ('name', 'group_members',)
+
+
+class DbUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = DBUser
         fields = (
-        'title', 'name','chapel','group','email',
-               )
-
-
-class MemSerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = Members
-        fields = ('title', 'first_name', 'other_name', 'last_name','sex','chapel', 'group', 'dob', 'phone_number',
-                  'whatsapp_number','other_phone_number','area_of_residence','gps_address',)
+            'title', 'name', 'chapel', 'group', 'email',
+        )
 
 
 class ChapelDbuserSerializer(serializers.ModelSerializer):
-    mem = MemSerializer(many=True, read_only=True)
+    user_chapel = DbUserSerializer(many=True, read_only=True)
 
     class Meta:
         model = Chapels
-        fields = ('name', 'mem')
-
+        fields = ('id', 'name', 'user_chapel')
