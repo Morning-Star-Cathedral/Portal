@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'ChurchDashboard.apps.ChurchdashboardConfig',
-    'rest_framework'
+    'rest_framework',
+    'rest_framework_swagger',
 ]
 
 MIDDLEWARE = [

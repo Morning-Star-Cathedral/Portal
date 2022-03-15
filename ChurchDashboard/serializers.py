@@ -40,3 +40,11 @@ class ChapelMemberSerializer(serializers.ModelSerializer):
         model = Chapels
         fields = ('id', 'name', 'chapel_members')
 
+
+class MemberAttendanceSerializer(serializers.ModelSerializer):
+    members_attendance = MemSerializer(many=True, read_only=True)
+
+    class Meta:
+        model =Attendances
+        fields = ('id', 'service_date', 'is_present', 'reason', 'comment', 'completed', 'members_attendance',)
+

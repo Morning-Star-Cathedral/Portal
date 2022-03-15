@@ -153,7 +153,7 @@ class RoleUser(models.Model):
 
 class Attendances(models.Model):
     id = models.BigAutoField(primary_key=True)
-    member = models.ForeignKey('Members', models.DO_NOTHING, related_name='mems')
+    member = models.ForeignKey('Members', models.DO_NOTHING, related_name='members_attendance')
     is_present = models.IntegerField()
     reason = models.CharField(max_length=17, blank=True, null=True)
     comment = models.TextField(blank=True, null=True)

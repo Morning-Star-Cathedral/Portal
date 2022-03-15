@@ -19,5 +19,7 @@ urlpatterns = [
     path('amchapszzz/', ChapelListAPi.as_view(), name='CHAPEL_LIST_API'),
     path('livedgroupzz/', GroupsApi.as_view()),
     path('zzchapelmembers/', ChapelMemberListAPI.as_view()),
+    path('attsmemes/', AttendanceMemberListAPi.as_view()),
+
 
 ]
