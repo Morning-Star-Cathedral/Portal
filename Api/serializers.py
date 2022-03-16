@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import *
+from ChurchDashboard.models import *
 
 
 class MemSerializer(serializers.ModelSerializer):

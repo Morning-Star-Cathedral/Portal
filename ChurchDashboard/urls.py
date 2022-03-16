@@ -14,12 +14,7 @@ urlpatterns = [
     path('chapels/<int:id>/', chap_details, name='details_chapels_urls'),
     path('grouplead/<int:id>/', db_details, name='details_grouplead_urls'),
 
-    # API URLS
-    path('zzdbuserzz/', DbUserListAPi.as_view()),
-    path('amchapszzz/', ChapelListAPi.as_view(), name='CHAPEL_LIST_API'),
-    path('livedgroupzz/', GroupsApi.as_view()),
-    path('zzchapelmembers/', ChapelMemberListAPI.as_view()),
-    path('attsmemes/', AttendanceMemberListAPi.as_view()),
+
 
 
 ]
