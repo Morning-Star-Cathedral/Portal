@@ -1,6 +1,7 @@
 from django.urls import path
 from ChurchDashboard.views import *
 
+app_name = 'ChurchDashboard'
 urlpatterns = [
     path('', index_page, name='home_page'),
     path('members/', list_view_member, name='list_member_url'),
