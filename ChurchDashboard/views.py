@@ -9,14 +9,16 @@ def index_page(request):
     groupcount = Groups.objects.all().count()
     usercount = DBUser.objects.all().count()
     chapscount = Chapels.objects.all().count()
-    mil = Members.objects.all().order_by('-id')[:10]
+    mil = Members.objects.all().order_by('id')[:20]
+    db_usered = DBUser.objects.all().order_by('id')[:20]
 
     context = {
         'memcounts': memcounts,
         'groupcount': groupcount,
         'usercount': usercount,
         'chapscount': chapscount,
-        'mil': mil
+        'mil': mil,
+        'db_usered': db_usered
     }
     return render(request, 'index.html', context)
 
