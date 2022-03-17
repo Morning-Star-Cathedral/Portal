@@ -9,7 +9,7 @@ def index_page(request):
     groupcount = Groups.objects.all().count()
     usercount = DBUser.objects.all().count()
     chapscount = Chapels.objects.all().count()
-    mil = Members.objects.all().order_by('id')[:20]
+    mil = Members.objects.all().order_by('-id')[:5]
     db_usered = DBUser.objects.all().order_by('id')[:20]
 
     context = {
