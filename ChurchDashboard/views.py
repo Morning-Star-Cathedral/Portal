@@ -24,7 +24,8 @@ def index_page(request):
 
 
 def list_view_member(request):
-    memlist = Members.objects.all().order_by('chapel')
+    memlist = Members.objects.all()
+    asd = DBUser.objects.all().filter(memlist.group =)
     context = {
         'memlist': memlist
     }
