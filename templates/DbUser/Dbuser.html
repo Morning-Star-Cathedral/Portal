@@ -1,7 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}CTAC | PC HEADS{% endblock %}
 {% block content %}
-    {% for db_user in db_user %}
 
-      {% if db_user.title %}  {{ db_user.title }} {% endif %}{{ db_user.name|capfirst }} {{ db_user.group.name }} <br>
-    {% endfor %}
+    <div class="content-wrapper">
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1>PC Heads</h1>
+                    </div>
+                </div>
+            </div>
+        </section>
 
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card">
+                                <div class="card-body">
+                                    <table id="example1" class="table table-bordered table-striped">
+                                        <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>TITLE</th>
+                                            <th>NAME</th>
+                                            <th> GROUP NAME</th>
+                                             <th> CHAPEL </th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {%  for db_user in db_user %}
+                                        <tr>
+                                            <td>{{ db_user.id }}</td>
+                                            <td>{{ db_user.title |default_if_none:""  }}</td>
+                                            <td>{{ db_user.name }}</td>
+                                            <td>{{ db_user.group }}</td>
+                                            <td>{{ db_user.chapel }}</td>
+                                        </tr>
+                                        {% endfor %}
+
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    </div>
 {% endblock %}
