@@ -35,7 +35,7 @@
                                         {%  for db_user in db_user %}
                                         <tr>
                                             <td>{{ db_user.id }}</td>
-                                            <td>{{ db_user.title |default_if_none:""  }}</td>
+                                            <td>{{ db_user.title |default_if_none:"" | capfirst }}</td>
                                             <td>{{ db_user.name }}</td>
                                             <td>{{ db_user.group }}</td>
                                             <td>{{ db_user.chapel }}</td>

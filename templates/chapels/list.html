@@ -1,7 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}CTAC | CHAPELS {% endblock %}
 {% block content %}
-    {% for chaps in chaps %}
-    {{ chaps.name }}<br>
 
-    {% endfor %}
+    <div class="content-wrapper">
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1>Chapels</h1>
+                    </div>
+                </div>
+            </div>
+        </section>
 
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card">
+                                <div class="card-body">
+                                    <table id="example1" class="table table-bordered table-striped">
+                                        <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                             <th> CHAPEL </th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {%  for chaps in chaps %}
+                                        <tr>
+                                            <td>{{ chaps.id }}</td>
+                                            <td>{{ chaps.name }}</td>
+                                        </tr>
+                                        {% endfor %}
+
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    </div>
 {% endblock %}
