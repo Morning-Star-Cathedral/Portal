@@ -22,12 +22,14 @@ def index_page(request):
     }
     return render(request, 'index.html', context)
 
+# chapel=chapel_page, availabe=True
 
 def list_view_member(request):
     memlist = Members.objects.all()
-    asd = DBUser.objects.all().filter(memlist.group =)
+    # asd = DBUser.objects.filter(group__id = memlist.union())
     context = {
-        'memlist': memlist
+        'memlist': memlist,
+        'asd': asd
     }
     return render(request, 'member/list.html', context)
 
