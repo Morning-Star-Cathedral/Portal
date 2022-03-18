@@ -30,8 +30,8 @@
                         <div class="small-box bg-success">
                             <div class="inner">
                                 <h3>{{ groupcount }}</h3>
-
-                                <p>PC Groups</p>
+                                <a href="{% url 'ChurchDashboard:list_group_url' %}" class="nav-link">
+                                    <p>PC Groups</p></a>
                             </div>
                             <div class="icon">
                                 <i class="ion ion-stats-bars"></i>

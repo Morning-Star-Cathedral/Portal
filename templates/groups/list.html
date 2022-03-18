@@ -1,5 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}CTAC | Groups{% endblock %}
 {% block content %}
-{% for gro in gro %}
-    {{ gro.name }}<br>
-    {% endfor %}
+
+    <div class="content-wrapper">
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1>PC Groups</h1>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card">
+                                <div class="card-body">
+                                    <table id="example1" class="table table-bordered table-striped">
+                                        <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th> GROUP NAME</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {%  for gro in gro %}
+                                        <tr>
+                                            <td>{{ gro.id }}</td>
+                                            <td><a href="{% url 'ChurchDashboard:details_group_urls' gro.id%}"  class="link-black" >{{ gro.name }}</a></td>
+                                        </tr>
+                                        {% endfor %}
+
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    </div>
 {% endblock %}

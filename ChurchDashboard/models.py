@@ -124,7 +124,7 @@ class DBUser(models.Model):
     email = models.CharField(unique=True, max_length=255)
     title = models.CharField(max_length=255, blank=True, null=True)
     chapel = models.ForeignKey(Chapels, models.DO_NOTHING, related_name='user_chapel')
-    group = models.ForeignKey(Groups, models.DO_NOTHING, related_name= 'user_groups')
+    group = models.ForeignKey(Groups, models.DO_NOTHING, related_name='user_groups')
     email_verified_at = models.DateTimeField(blank=True, null=True)
     password = models.CharField(max_length=255)
     remember_token = models.CharField(max_length=100, blank=True, null=True)

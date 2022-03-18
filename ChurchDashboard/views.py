@@ -112,10 +112,16 @@ def chap_details(request, id):
 # Details View group
 def groups_details(request, pk):
     grodetails = get_object_or_404(Groups, pk=pk)
-    db_mem = Members.objects.filter(groups__pk=pk)
+    userlist = DBUser.objects.filter(group__id=pk)
+    gro_membs_count = Members.objects.filter(group__id=pk).count()
+    gro_membs = Members.objects.filter(group__id=pk)
+
     context = {
         'grodetails': grodetails,
-        'db_mem': db_mem
+        'userlist': userlist,
+        'gro_membs_count': gro_membs_count,
+        'gro_membs' :gro_membs,
+        # 'db_mem': db_mem
     }
     return render(request, 'groups/details3.html', context)
 
