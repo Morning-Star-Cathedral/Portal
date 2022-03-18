@@ -22,6 +22,11 @@
     <link rel="stylesheet" href="{% static 'plugins/datatables-responsive/css/responsive.bootstrap4.min.css' %}">
     <link rel="stylesheet" href="{% static 'plugins/datatables-buttons/css/buttons.bootstrap4.min.css' %}">
 </head>
+<style>
+a:hover {
+  background-color: transparent;
+}
+</style>
 <body class="hold-transition sidebar-mini layout-fixed  layout-navbar-fixed ">
 <div class="wrapper">
 
@@ -72,7 +77,7 @@
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                     data-accordion="false">
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="{% url 'ChurchDashboard:list_member_url' %}" class="nav-link">
                            <i class="fas fa-users"></i> &nbsp;
 
                             <p>
@@ -83,10 +88,9 @@
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">
-                             <i class="ion ion-stats-bars"></i> &nbsp;
+                            <i class="ion ion-stats-bars"></i> &nbsp;
                             <p>
                                 PC Groups
-
                             </p>
                         </a>
 

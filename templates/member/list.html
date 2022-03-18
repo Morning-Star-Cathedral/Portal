@@ -38,7 +38,7 @@
                                         <tr>
                                             <td>{{ memlist.id }}</td>
                                             <td>{{ memlist.first_name }}</td>
-                                            <td>{{ memlist.last_name}}</td>
+                                            <td><a href="{% url 'ChurchDashboard:details_member_urls' memlist.id %}" class="link-black" >{{ memlist.last_name}}</a></td>
                                             <td>{{ memlist.phone_number }}</td>
                                             <td>{{ memlist.chapel }}</td>
 {# will have to change it to suite it#}

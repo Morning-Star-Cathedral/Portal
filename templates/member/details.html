@@ -1,10 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}CTAC |{{ mem_det.last_name }}{% endblock %}
+{% block content %}
 
-</body>
-</html>
+    <div class="content-wrapper">
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1>PC Members &nbsp; {{ mem_det.last_name }}&nbsp;{{ mem_det.other_name|default_if_none:"" }}&nbsp;{{ mem_det.first_name }}</h1>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+{% endblock %}

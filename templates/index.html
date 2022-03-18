@@ -15,10 +15,13 @@
                         <div class="small-box bg-info">
                             <div class="inner">
                                 <h3>{{ memcounts }}</h3>
-                                <p>Members</p>
+                                 <a href="{% url 'ChurchDashboard:list_member_url' %}" class="nav-link">
+                                     <p>Members</p></a>
                             </div>
                             <div class="icon">
+
                                 <i class="fas fa-users"></i>
+
                             </div>
                         </div>
                     </div>

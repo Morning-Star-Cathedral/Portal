@@ -82,13 +82,20 @@ def db_user_list(request):
 
 # Details View Members
 
-def members_details(request, id):
-    mem_det = get_object_or_404(Members, id=id)
+def members_details(request, pk):
+    mem_det = get_object_or_404(Members, pk=pk)
     context = {
         'mem_det': mem_det
     }
     return render(request, 'member/details.html', context)
 
+
+# def details_membs(request, id):
+#     memdets = get_object_or_404(Members, id=id)
+#     context = {
+#         'memdets': memdets
+#     }
+#     return render(request, 'member/details.html', context)
 
 # Details View Chapels
 
