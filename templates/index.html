@@ -15,8 +15,8 @@
                         <div class="small-box bg-info">
                             <div class="inner">
                                 <h3>{{ memcounts }}</h3>
-                                 <a href="{% url 'ChurchDashboard:list_member_url' %}" class="nav-link">
-                                     <p>Members</p></a>
+                                <a href="{% url 'ChurchDashboard:list_member_url' %}" class="nav-link">
+                                    <p>Members</p></a>
                             </div>
                             <div class="icon">
 
@@ -93,7 +93,7 @@
                                                     {% for db_usered in db_usered %}
                                                         <tr>
                                                             <td>{{ db_usered.id }}</td>
-                                                            <td>{{ db_usered.name  }}</td>
+                                                            <td>{{ db_usered.name }}</td>
                                                             <td>{{ db_usered.group }}</td>
                                                             <td>{{ db_usered.chapel }}&nbsp;</td>
                                                         </tr>
