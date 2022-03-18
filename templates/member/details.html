@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}CTAC |{{ mem_det.last_name }}{% endblock %}
+{% block title %}CTAC |{{ mem_det.last_name }}| {{ mem_det.other_name|default_if_none:"" }}| {{ mem_det.first_name }}{% endblock %}
 {% block content %}
 
     <div class="content-wrapper">
