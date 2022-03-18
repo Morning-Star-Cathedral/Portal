@@ -28,8 +28,7 @@ def list_view_member(request):
     memlist = Members.objects.all()
     # asd = DBUser.objects.filter(group__id = memlist.union())
     context = {
-        'memlist': memlist,
-        'asd': asd
+        'memlist': memlist
     }
     return render(request, 'member/list.html', context)
 
