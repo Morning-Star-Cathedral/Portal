@@ -34,7 +34,7 @@ INSTALLED_APPS = [
     'ChurchDashboard.apps.ChurchdashboardConfig',
     'rest_framework',
     'Api.apps.ApiConfig',
-    'rest_framework_swagger',
+    # 'rest_framework_swagger',
 ]
 
 MIDDLEWARE = [
@@ -75,7 +75,7 @@ WSGI_APPLICATION = 'djangoProject14.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'lci_ctac',
+        'NAME': 'newrugs',
         'USER': 'root',
         'PASSWORD': '',
         'HOST': 'localhost',
