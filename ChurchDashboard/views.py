@@ -86,7 +86,7 @@ def db_user_list(request):
 
 def members_details(request, pk):
     if cache.get(pk):
-        print('cache data')
+        print('cache working')
         mem_det = cache.get(pk)
     else:
         try:
@@ -101,18 +101,19 @@ def members_details(request, pk):
     return render(request, 'member/details.html', context)
 
 
-# def details_membs(request, id):
-#     memdets = get_object_or_404(Members, id=id)
-#     context = {
-#         'memdets': memdets
-#     }
-#     return render(request, 'member/details.html', context)
-
 # Details View Chapels
-
 def chap_details(request, id):
-    chadetails = get_object_or_404(Chapels, id=id)
     db_users = DBUser.objects.filter(chapel__id=id)
+    if cache.get(id):
+        print('we did it')
+        chadetails = cache.get(id)
+    else:
+        try:
+            chadetails = Chapels.objects.get(id=id)
+            cache.set(id, chadetails)
+
+        except Chapels.DoesNotExist:
+            return redirect('ChurchDashboard:home_page')
     context = {
         'chadetails': chadetails,
         'db_users': db_users
