@@ -30,7 +30,8 @@
                                         {%  for chaps in chaps %}
                                         <tr>
                                             <td>{{ chaps.id }}</td>
-                                            <td>{{ chaps.name }}</td>
+                                            <td><a href="{% url 'ChurchDashboard:details_chapels_urls' chaps.id %}" class="link-black" >{{ chaps.name}}</a></td>
+
                                         </tr>
                                         {% endfor %}
 

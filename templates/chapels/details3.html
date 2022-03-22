@@ -13,7 +13,8 @@
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="{% url 'ChurchDashboard:home_page' %}">Home</a></li>
-                            <li class="breadcrumb-item"><a href="{% url 'ChurchDashboard:list_chapel_url' %}">Chapels</a></li>
+                            <li class="breadcrumb-item"><a
+                                    href="{% url 'ChurchDashboard:list_chapel_url' %}">Chapels</a></li>
                             <li class="breadcrumb-item active">{{ chadetails.name }}</li>
                         </ol>
                     </div>
@@ -22,32 +23,30 @@
             </div>
         </section>
         <div class="card-body">
-                <div class="row">
-                    <div class="col-12 col-md-12 col-lg-8 order-2 order-md-1">
-                        <div class="row">
-                            <div class="col-12 col-sm-4">
-                                <div class="info-box bg-light">
-                                    <div class="info-box-content">
-                                        <span class="info-box-text text-center text-muted">{{chadetails.name }} &nbsp; Total Group Heads</span>
-                                        <span class="info-box-number text-center text-muted mb-0">{{ dbuser_count }}</span>
-                                    </div>
+            <div class="row">
+                <div class="col-12 col-md-12 col-lg-8 order-2 order-md-1">
+                    <div class="row">
+                        <div class="col-12 col-sm-4">
+                            <div class="info-box bg-light">
+                                <div class="info-box-content">
+                                    <span class="info-box-text text-center text-muted">{{ chadetails.name }} &nbsp; Total Group Heads</span>
+                                    <span class="info-box-number text-center text-muted mb-0">{{ dbuser_count }}</span>
                                 </div>
                             </div>
-                            <div class="col-12 col-sm-4">
-                                <div class="info-box bg-light">
-                                    <div class="info-box-content">
-                                        <span class="info-box-text text-center text-muted">{{ chadetails.name }} &nbsp; Leader </span>
-                                        {% for db_users in db_users %}
-                                        <span class="info-box-number text-center text-muted mb-0">{{ db_users.name }} </span>
-                                        {% endfor %}
-                                    </div>
+                        </div>
+                        <div class="col-12 col-sm-4">
+                            <div class="info-box bg-light">
+                                <div class="info-box-content">
+                                    <span class="info-box-text text-center text-muted">{{ chadetails.name }} Total Members </span>
+                                    <span class="info-box-number text-center text-muted mb-0">{{ ch_mem_count }} </span>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-     <section class="content">
+        </div>
+        <section class="content">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12">
@@ -64,13 +63,13 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        {%  for db_users in db_users %}
-                                        <tr>
-                                            <td>{{ db_users.id }}</td>
-                                             <td>{{ db_users.name }}</td>
-                                             <td>{{ db_users.email }}</td>
+                                        {% for db_users in db_users %}
+                                            <tr>
+                                                <td>{{ db_users.id }}</td>
+                                                <td>{{ db_users.name }}</td>
+                                                <td>{{ db_users.email }}</td>
 
-                                        </tr>
+                                            </tr>
                                         {% endfor %}
 
                                         </tfoot>
