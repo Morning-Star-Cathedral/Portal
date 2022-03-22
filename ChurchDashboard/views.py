@@ -123,11 +123,18 @@ def chap_details(request, id):
 
 # Details View group
 def groups_details(request, pk):
-    grodetails = get_object_or_404(Groups, pk=pk)
     userlist = DBUser.objects.filter(group__id=pk)
     gro_membs_count = Members.objects.filter(group__id=pk).count()
     gro_membs = Members.objects.filter(group__id=pk)
-
+    if cache.get(pk):
+        print('cache')
+        grodetails = cache.get(pk)
+    else:
+        try:
+            grodetails = Groups.objects.get(pk=pk)
+            cache.set(pk, grodetails)
+        except Groups.DoesNotExist:
+            return redirect('ChurchDashboard:home_page')
     context = {
         'grodetails': grodetails,
         'userlist': userlist,
