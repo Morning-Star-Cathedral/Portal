@@ -104,6 +104,7 @@ def members_details(request, pk):
 # Details View Chapels
 def chap_details(request, id):
     db_users = DBUser.objects.filter(chapel__id=id)
+    dbuser_count = DBUser.objects.filter(chapel__id=id).count()
     if cache.get(id):
         print('we did it')
         chadetails = cache.get(id)
@@ -116,7 +117,8 @@ def chap_details(request, id):
             return redirect('ChurchDashboard:home_page')
     context = {
         'chadetails': chadetails,
-        'db_users': db_users
+        'db_users': db_users,
+        'dbuser_count': dbuser_count
     }
     return render(request, 'chapels/details3.html', context)
 
