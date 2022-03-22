@@ -13,7 +13,7 @@ urlpatterns = [
     path('members/<int:pk>', members_details, name='details_member_urls'),
     path('groups/<int:pk>/', groups_details, name='details_group_urls'),
     path('chapels/<int:id>/', chap_details, name='details_chapels_urls'),
-    path('grouplead/<int:id>/', db_details, name='details_grouplead_urls'),
+    path('grouplead/<int:id>/', db_detail, name='details_grouplead_urls'),
     # path('members/<id>/', details_membs, name='details_members_urls'),
 
 

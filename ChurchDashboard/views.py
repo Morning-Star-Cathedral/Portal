@@ -145,11 +145,18 @@ def groups_details(request, pk):
     return render(request, 'groups/details3.html', context)
 
 
-def db_details(request, id):
-    db_details = get_object_or_404(DBUser, id=id)
-    mens = Members.objects.filter(dbuser__id=id)
+def db_detail(request, id):
+    # mens = Members.objects.filter(dbuser__id=id)
+    if cache.get(id):
+        db_details = cache.get(id)
+    else:
+        try:
+            db_details = DBUser.objects.get(id=id)
+            cache.set(id, db_details)
+        except DBUser.DoesNotExist:
+            return redirect('ChurchDashboard:home_page')
     context = {
-        'db_details': db_details,
-        'mens': mens
+        'db_details': db_details
+        # 'mens': mens
     }
     return render(request, 'DbUser/details.html', context)
