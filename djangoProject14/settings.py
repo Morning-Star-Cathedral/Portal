@@ -75,7 +75,7 @@ WSGI_APPLICATION = 'djangoProject14.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'newrugs',
+        'NAME': 'lci_ctac',
         'USER': 'root',
         'PASSWORD': '',
         'HOST': 'localhost',
