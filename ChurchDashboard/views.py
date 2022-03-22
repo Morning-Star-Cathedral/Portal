@@ -1,5 +1,6 @@
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, redirect
 from ChurchDashboard.models import AttendanceSummaries, Attendances, Members, Groups, Chapels, DBUser
+from django.core.cache import cache
 
 
 # Create your views here.
@@ -21,6 +22,7 @@ def index_page(request):
         'db_usered': db_usered
     }
     return render(request, 'index.html', context)
+
 
 # chapel=chapel_page, availabe=True
 
@@ -83,7 +85,16 @@ def db_user_list(request):
 # Details View Members
 
 def members_details(request, pk):
-    mem_det = get_object_or_404(Members, pk=pk)
+    if cache.get(pk):
+        print('cache data')
+        mem_det = cache.get(pk)
+    else:
+        try:
+            mem_det = Members.objects.get(pk=pk)
+            cache.set(pk, mem_det)
+            print('DB DATA')
+        except Members.DoesNotExist:
+            return redirect('ChurchDashboard:home_page')
     context = {
         'mem_det': mem_det
     }
@@ -120,7 +131,7 @@ def groups_details(request, pk):
         'grodetails': grodetails,
         'userlist': userlist,
         'gro_membs_count': gro_membs_count,
-        'gro_membs' :gro_membs,
+        'gro_membs': gro_membs,
         # 'db_mem': db_mem
     }
     return render(request, 'groups/details3.html', context)
@@ -134,4 +145,3 @@ def db_details(request, id):
         'mens': mens
     }
     return render(request, 'DbUser/details.html', context)
-
