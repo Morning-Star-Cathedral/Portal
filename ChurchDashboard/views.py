@@ -28,7 +28,7 @@ def index_page(request):
 
 def list_view_member(request):
     memlist = Members.objects.all()
-    # asd = DBUser.objects.filter(group__id = memlist.union())
+    groud = Groups.objects.filter()
     context = {
         'memlist': memlist
     }
@@ -143,8 +143,8 @@ def groups_details(request, pk):
         'grodetails': grodetails,
         'userlist': userlist,
         'gro_membs_count': gro_membs_count,
-        'gro_membs': gro_membs,
-        # 'db_mem': db_mem
+        'gro_membs': gro_membs
+
     }
     return render(request, 'groups/details3.html', context)
 
