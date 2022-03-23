@@ -168,3 +168,5 @@ def db_detail(request, id):
         # 'mens': mens
     }
     return render(request, 'DbUser/details.html', context)
+
+
