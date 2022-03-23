@@ -106,6 +106,7 @@ def chap_details(request, id):
     db_users = DBUser.objects.filter(chapel__id=id)
     dbuser_count = DBUser.objects.filter(chapel__id=id).count()
     ch_mem_count = Members.objects.filter(chapel__id=id).count()
+    cha_mem = Members.objects.filter(chapel__id=id).order_by(('-id')[:5])
     if cache.get(id):
         print('we did it')
         chadetails = cache.get(id)
@@ -120,7 +121,10 @@ def chap_details(request, id):
         'chadetails': chadetails,
         'db_users': db_users,
         'dbuser_count': dbuser_count,
-        'ch_mem_count': ch_mem_count
+        'ch_mem_count': ch_mem_count,
+        'cha_mem': cha_mem
+
+
     }
     return render(request, 'chapels/details3.html', context)
 

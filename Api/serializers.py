@@ -45,6 +45,5 @@ class MemberAttendanceSerializer(serializers.ModelSerializer):
     members_attendance = MemSerializer(many=True, read_only=True)
 
     class Meta:
-        model =Attendances
+        model = Attendances
         fields = ('id', 'service_date', 'is_present', 'reason', 'comment', 'completed', 'members_attendance',)
-
