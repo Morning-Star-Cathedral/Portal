@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
 from django.utils.translation import gettext_lazy as _
+from django.utils.safestring import mark_safe
 
 
 # Create your models here.
@@ -59,3 +60,12 @@ class UserAccounts(AbstractBaseUser, PermissionsMixin):
 
     def has_perm(self, perm, obj=None):
         return self.is_superuser
+
+    def image_tag(self):
+        return mark_safe('<img src="/../../media/%s" width="150" height="150" />' % (self.photo))
+
+    image_tag.allow_tags = True
+
+    class Meta:
+        verbose_name = 'useraccount'
+        verbose_name_plural = 'useraccounts'

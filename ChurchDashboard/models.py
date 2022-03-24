@@ -4,11 +4,13 @@ from django.db import models
 class Chapels(models.Model):
     id = models.BigAutoField(primary_key=True)
     name = models.CharField(max_length=255)
-    created_at = models.DateTimeField(blank=True, null=True)
-    updated_at = models.DateTimeField(blank=True, null=True)
+    created_at = models.DateTimeField(blank=True, auto_now_add=True)
+    updated_at = models.DateTimeField(blank=True, auto_now=True)
 
     class Meta:
         managed = False
+        verbose_name = 'chapel'
+        verbose_name_plural = 'chapels'
         db_table = 'chapels'
 
     def __str__(self):
@@ -32,11 +34,13 @@ class FailedJobs(models.Model):
 class Groups(models.Model):
     id = models.BigAutoField(primary_key=True)
     name = models.CharField(unique=True, max_length=255)
-    created_at = models.DateTimeField(blank=True, null=True)
-    updated_at = models.DateTimeField(blank=True, null=True)
+    created_at = models.DateTimeField(blank=True, auto_now_add=True)
+    updated_at = models.DateTimeField(blank=True, auto_now=True)
 
     class Meta:
         managed = False
+        verbose_name = 'group'
+        verbose_name_plural = 'groups'
         db_table = 'groups'
 
     def __str__(self):
@@ -58,11 +62,13 @@ class Members(models.Model):
     other_phone_number = models.CharField(max_length=255, blank=True, null=True)
     area_of_residence = models.CharField(max_length=255, blank=True, null=True)
     gps_address = models.CharField(max_length=255, blank=True, null=True)
-    created_at = models.DateTimeField(blank=True, null=True)
-    updated_at = models.DateTimeField(blank=True, null=True)
+    created_at = models.DateTimeField(blank=True, auto_now_add=True)
+    updated_at = models.DateTimeField(blank=True, auto_now=True)
 
     class Meta:
         managed = False
+        verbose_name = 'member'
+        verbose_name_plural = 'members'
         db_table = 'members'
 
     def __str__(self):
@@ -107,8 +113,8 @@ class PersonalAccessTokens(models.Model):
 class Roles(models.Model):
     id = models.BigAutoField(primary_key=True)
     name = models.CharField(max_length=255)
-    created_at = models.DateTimeField(blank=True, null=True)
-    updated_at = models.DateTimeField(blank=True, null=True)
+    created_at = models.DateTimeField(blank=True, auto_now_add=True)
+    updated_at = models.DateTimeField(blank=True, auto_now=True)
 
     class Meta:
         managed = False
@@ -128,8 +134,8 @@ class DBUser(models.Model):
     email_verified_at = models.DateTimeField(blank=True, null=True)
     password = models.CharField(max_length=255)
     remember_token = models.CharField(max_length=100, blank=True, null=True)
-    created_at = models.DateTimeField(blank=True, null=True)
-    updated_at = models.DateTimeField(blank=True, null=True)
+    created_at = models.DateTimeField(blank=True, auto_now_add=True)
+    updated_at = models.DateTimeField(blank=True, auto_now=True)
 
     class Meta:
         managed = False
@@ -143,12 +149,15 @@ class RoleUser(models.Model):
     id = models.BigAutoField(primary_key=True)
     role = models.ForeignKey('Roles', models.DO_NOTHING)
     user = models.ForeignKey('DBUser', models.DO_NOTHING)
-    created_at = models.DateTimeField(blank=True, null=True)
-    updated_at = models.DateTimeField(blank=True, null=True)
+    created_at = models.DateTimeField(blank=True, auto_now_add=True)
+    updated_at = models.DateTimeField(blank=True, auto_now=True)
 
     class Meta:
         managed = False
         db_table = 'role_user'
+
+    def __str__(self):
+        return str(self.role)
 
 
 class Attendances(models.Model):
@@ -159,11 +168,13 @@ class Attendances(models.Model):
     comment = models.TextField(blank=True, null=True)
     service_date = models.DateTimeField()
     completed = models.IntegerField()
-    created_at = models.DateTimeField(blank=True, null=True)
-    updated_at = models.DateTimeField(blank=True, null=True)
+    created_at = models.DateTimeField(blank=True, auto_now_add=True)
+    updated_at = models.DateTimeField(blank=True, auto_now=True)
 
     class Meta:
         managed = False
+        verbose_name = 'attendance'
+        verbose_name_plural = 'attendances'
         db_table = 'attendances'
 
 
@@ -173,11 +184,13 @@ class AttendanceSummaries(models.Model):
     attendance_date = models.DateTimeField()
     group = models.ForeignKey('Groups', models.DO_NOTHING, related_name='grouped')
     total_present = models.CharField(max_length=255)
-    created_at = models.DateTimeField(blank=True, null=True)
-    updated_at = models.DateTimeField(blank=True, null=True)
+    created_at = models.DateTimeField(blank=True, auto_now_add=True)
+    updated_at = models.DateTimeField(blank=True, auto_now=True)
     total_absent = models.CharField(max_length=255)
     present_percentage = models.CharField(max_length=255)
 
     class Meta:
         managed = False
+        verbose_name = 'attendance_summary'
+        verbose_name_plural = 'attendance_summaries'
         db_table = 'attendance_summaries'
