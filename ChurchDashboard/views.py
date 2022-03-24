@@ -38,7 +38,7 @@ def list_view_member(request):
 # list attendance ordered by created at
 # Ruben should look at the data being passed to service date ie am receiving a char instead of a date field
 def list_view_attendance(request):
-    read = Attendances.objects.all().order_by('-created_at')
+    read = Attendances.objects.all().order_by('service_date')
     context = {
         'read': read
 
