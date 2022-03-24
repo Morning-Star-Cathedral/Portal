@@ -114,11 +114,21 @@ a:hover {
                         </a>
 
                     </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-edit"></i> &nbsp;
+                     <li class="nav-item">
+                        <a href="{% url 'ChurchDashboard:list_attendance_url' %}" class="nav-link">
+                            <i class="nav-icon far fa-plus-square"></i> &nbsp;
                             <p>
                                 Attendances
+
+                            </p>
+                        </a>
+
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'ChurchDashboard:list_summary_attendance_url' %}" class="nav-link">
+                            <i class="nav-icon fas fa-edit"></i> &nbsp;
+                            <p>
+                                Attendances Summary
                             </p>
                         </a>
 
