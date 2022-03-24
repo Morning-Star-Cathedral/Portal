@@ -48,7 +48,7 @@ def list_view_attendance(request):
 
 # attendance summary list ordered by created at asecending
 def attendance_summmaries_list(request):
-    att_summary = AttendanceSummaries.objects.all().order_by('-created_at')
+    att_summary = AttendanceSummaries.objects.all().order_by('attendance_date')
     context = {
         'att_summary': att_summary
     }
