@@ -5,21 +5,23 @@ from django.contrib.auth import authenticate, login, logout, update_session_auth
 
 
 # Create your views here.
-
-def login_user(request):
+def login_request(request):
     if request.method == 'POST':
-        email = request.POST.get('email')
-        password = request.POST.get('password')
-        user = authenticate(request, email=email, password=password)
-        if user is not None:
-            request.session['pk'] = user.pk
-            return redirect('accounts:login_user')
-
-        if 'next' in request.POST:
-            return redirect(request.POST.get('next'))
+        form = CustomUserCreationForm(request=request, data=request.POST)
+        if form.is_valid():
+            email = form.cleaned_data.get('email')
+            password = form.cleaned_data.get('password')
+            user = authenticate(email=email, password=password)
+            if user is not None:
+                login(request, user)
+                messages.info(request, f"You are now logged in as {email}")
+                return redirect('/')
+            else:
+                messages.error(request, "Invalid username or password.")
         else:
-            return render(request, 'accounts/login.html', {})
-    return render(request, 'accounts/login.html', {})
+            messages.error(request, "Invalid username or password.")
+    form = CustomUserCreationForm()
+    return render(request=request, template_name="accounts/login.html", context={"form": form})
 
 
 def logout_user(request):
