@@ -13,10 +13,15 @@ def login_user(request):
         user = authenticate(request, email=email, password=password)
         if user is not None:
             request.session['pk'] = user.pk
-            return redirect('ChurchDashboard:home_page')
+            return redirect('accounts:login_user')
 
         if 'next' in request.POST:
             return redirect(request.POST.get('next'))
         else:
             return render(request, 'accounts/login.html', {})
     return render(request, 'accounts/login.html', {})
+
+
+def logout_user(request):
+    logout(request)
+    return redirect('accounts:login_user')
