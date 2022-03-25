@@ -8,14 +8,14 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1> {{ chadetails.name }}</h1>
+                        <h1> {{ db_details }}</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="{% url 'ChurchDashboard:home_page' %}">Home</a></li>
                             <li class="breadcrumb-item"><a
-                                    href="{% url 'ChurchDashboard:list_chapel_url' %}">Chapels</a></li>
-                            <li class="breadcrumb-item active">{{ chadetails.name }}</li>
+                                    href="{% url 'ChurchDashboard:list_grouplead_url' %}">Group Head</a></li>
+                            <li class="breadcrumb-item active">{{ db_details.name }}</li>
                         </ol>
                     </div>
                 </div>
