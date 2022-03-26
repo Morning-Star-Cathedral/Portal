@@ -176,6 +176,7 @@ def create_view_group(request):
     groupcreate = CreateGroupForm(request.POST or None)
     if groupcreate.is_valid():
         groupcreate.save()
+        return redirect('ChurchDashboard:list_group_url')
 
     context['groupcreate'] = groupcreate
     return render(request, "groups/create.html", context)
