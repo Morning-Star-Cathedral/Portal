@@ -39,6 +39,9 @@ a:hover {
                 <li class="nav-item d-none d-sm-inline-block">
                     <a href="{% url 'ChurchDashboard:home_page' %}" class="nav-link">Home</a>
                 </li>
+                 <li class="nav-item d-none d-sm-inline-block">
+                     {{ user.lastname }}
+                </li>
 
             </ul>
             <ul class="navbar-nav ml-auto">
