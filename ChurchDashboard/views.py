@@ -29,9 +29,11 @@ def index_page(request):
 
 def list_view_member(request):
     memlist = Members.objects.all()
-    groud = Groups.objects.filter()
+    # groud = DBUser.objects.filter(group__id=Members.group)
+
     context = {
         'memlist': memlist
+        # 'groud': groud,
     }
     return render(request, 'member/list.html', context)
 
