@@ -1,7 +1,7 @@
 from django.shortcuts import get_object_or_404, render, redirect
 from ChurchDashboard.models import AttendanceSummaries, Attendances, Members, Groups, Chapels, DBUser
 from django.core.cache import cache
-from .forms import CreateGroupForm
+from .forms import CreateGroupForm, CreateChapelForm
 
 
 # Create your views here.
@@ -125,7 +125,6 @@ def chap_details(request, id):
         'ch_mem_count': ch_mem_count,
         'cha_mem': cha_mem
 
-
     }
     return render(request, 'chapels/details3.html', context)
 
@@ -180,3 +179,23 @@ def create_view_group(request):
 
     context['groupcreate'] = groupcreate
     return render(request, "groups/create.html", context)
+
+
+def group_delete(request, pk):
+    delete_group = get_object_or_404(Groups, pk=pk)
+    if request.method == "POST":
+        delete_group.delete()
+        return redirect('ChurchDashboard:list_group_url')
+    return render(request, 'groups/delete.html', context={})
+
+
+def create_chapel(request):
+    context = {
+
+    }
+    chapel_create = CreateChapelForm(request.POST or None)
+    if chapel_create.is_valid():
+        chapel_create.save()
+        return redirect('ChurchDashboard:list_chapel_url')
+    context['chapel_create'] = chapel_create
+    return render(request, 'chapels/add.html', context)

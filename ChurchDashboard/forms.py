@@ -8,3 +8,11 @@ class CreateGroupForm(forms.ModelForm):
         fields = (
             'name',
         )
+
+
+class CreateChapelForm(forms.ModelForm):
+    class Meta:
+        model = Chapels
+        fields = (
+            'name',
+        )

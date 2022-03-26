@@ -16,6 +16,7 @@ urlpatterns = [
     path('grouplead/<int:id>/', db_detail, name='details_grouplead_urls'),
     # path('members/<id>/', details_membs, name='details_members_urls'),
     path('addgroup/', create_view_group, name='add_group_url'),
+    path('addchapel/', create_chapel, name='add_chapel_url'),
 
 
 
