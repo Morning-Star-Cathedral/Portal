@@ -1,6 +1,7 @@
 from django.shortcuts import get_object_or_404, render, redirect
 from ChurchDashboard.models import AttendanceSummaries, Attendances, Members, Groups, Chapels, DBUser
 from django.core.cache import cache
+from .forms import CreateGroupForm
 
 
 # Create your views here.
@@ -170,3 +171,11 @@ def db_detail(request, id):
     return render(request, 'DbUser/details.html', context)
 
 
+def create_view_group(request):
+    context = {}
+    groupcreate = CreateGroupForm(request.POST or None)
+    if groupcreate.is_valid():
+        groupcreate.save()
+
+    context['groupcreate'] = groupcreate
+    return render(request, "groups/create.html", context)
