@@ -110,6 +110,7 @@ def chap_details(request, id):
     dbuser_count = DBUser.objects.filter(chapel__id=id).count()
     ch_mem_count = Members.objects.filter(chapel__id=id).count()
     cha_mem = Members.objects.filter(chapel__id=id).order_by(('-id')[:5])
+    membered = Members.objects.filter(group__id=id)
     if cache.get(id):
         print('we did it')
         chadetails = cache.get(id)
@@ -125,7 +126,8 @@ def chap_details(request, id):
         'db_users': db_users,
         'dbuser_count': dbuser_count,
         'ch_mem_count': ch_mem_count,
-        'cha_mem': cha_mem
+        'cha_mem': cha_mem,
+        'membered': membered
 
     }
     return render(request, 'chapels/details3.html', context)
@@ -156,6 +158,7 @@ def groups_details(request, pk):
 
 
 def db_detail(request, id):
+    gro_membs_count = Members.objects.filter(group__id=id).count()
     # mens = Members.objects.filter(dbuser__id=id)
     if cache.get(id):
         db_details = cache.get(id)
@@ -166,7 +169,8 @@ def db_detail(request, id):
         except DBUser.DoesNotExist:
             return redirect('ChurchDashboard:home_page')
     context = {
-        'db_details': db_details
+        'db_details': db_details,
+        'gro_membs_count': gro_membs_count
         # 'mens': mens
     }
     return render(request, 'DbUser/details.html', context)
