@@ -29,8 +29,8 @@
                                             <th>LAST NAME</th>
                                             <th>PONE NUMBER</th>
                                             <th> CHAPEL NAME</th>
-                                            <th> PC GROUP LEADER</th>
-                                            <th> GROUP NAME</th>
+                                            <th> PC GROUP </th>
+
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -41,9 +41,6 @@
                                             <td><a href="{% url 'ChurchDashboard:details_member_urls' memlist.id %}" class="link-black" >{{ memlist.last_name}}</a></td>
                                             <td>{{ memlist.phone_number }}</td>
                                             <td>{{ memlist.chapel }}</td>
-{# will have to change it to suite it#}
-{#                                            <td>{{ groud. }}</td>#}
-{#                                                {% endfor %}#}
                                             <td>{{ memlist.group }}</td>
                                         </tr>
                                         {% endfor %}
