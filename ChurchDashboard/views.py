@@ -158,8 +158,8 @@ def groups_details(request, pk):
 
 
 def db_detail(request, id):
-    gro_membs_count = Members.objects.filter(group__id=id).count()
-    # mens = Members.objects.filter(dbuser__id=id)
+    # gro_membs_count = Members.objects.filter(group__id=DBUser.group).count()
+    # gro_membs = Members.objects.filter(group__id=id)
     if cache.get(id):
         db_details = cache.get(id)
     else:
@@ -170,7 +170,8 @@ def db_detail(request, id):
             return redirect('ChurchDashboard:home_page')
     context = {
         'db_details': db_details,
-        'gro_membs_count': gro_membs_count
+        # 'gro_membs_count': gro_membs_count,
+        # 'gro_membs': gro_membs
         # 'mens': mens
     }
     return render(request, 'DbUser/details.html', context)

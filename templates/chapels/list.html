@@ -23,23 +23,27 @@
                                         <thead>
                                         <tr>
                                             <th>ID</th>
-                                             <th> CHAPEL </th>
+                                            <th> CHAPEL</th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        {%  for chaps in chaps %}
-                                        <tr>
-                                            <td>{{ chaps.id }}</td>
-                                            <td><a href="{% url 'ChurchDashboard:details_chapels_urls' chaps.id %}" class="link-black" >{{ chaps.name}}</a></td>
+                                        {% for chaps in chaps %}
+                                            <tr>
+                                                <td>{{ chaps.id }}</td>
+                                                <td><a href="{% url 'ChurchDashboard:details_chapels_urls' chaps.id %}"
+                                                       class="link-black">{{ chaps.name }}</a></td>
 
-                                        </tr>
+                                            </tr>
                                         {% endfor %}
 
                                         </tfoot>
                                     </table>
                                 </div>
+                                        </div>
+                        <div class="card-footer clearfix">
+                <a href="{% url 'ChurchDashboard:add_chapel_url' %}" class="btn btn-sm btn-secondary float-right">New Chapel</a>
+              </div>
                             </div>
-                            <a href="{% url 'ChurchDashboard:add_chapel_url' %}" class="link-black" > <p> add chapel</p></a>
                         </div>
                     </div>
                 </div>

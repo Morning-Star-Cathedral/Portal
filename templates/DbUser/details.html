@@ -29,13 +29,7 @@
                         <div class="col-12 col-sm-4">
                             <div class="info-box bg-light">
                                 <div class="info-box-content">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-sm-4">
-                            <div class="info-box bg-light">
-                                <div class="info-box-content">
-                                    <span class="info-box-text text-center text-muted">{{ chadetails.name }} Total Members </span>
+                                    <span class="info-box-text text-center text-muted"> Total Members </span>
                                     <span class="info-box-number text-center text-muted mb-0">{{ gro_membs_count }} </span>
                                 </div>
                             </div>
@@ -61,11 +55,11 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        {% for db_users in db_users %}
+                                        {% for gro_membs in gro_membs %}
                                             <tr>
-                                                <td>{{ db_users.id }}</td>
-                                                <td>{{ db_users.name }}</td>
-                                                <td>{{ db_users.email }}</td>
+                                                <td>{{ gro_membs.id }}</td>
+                                                <td>{{ gro_membs.last_name }}</td>
+                                                <td>{{ gro_membs.first_name }}</td>
 
                                             </tr>
                                         {% endfor %}
