@@ -12,7 +12,7 @@ def index_page(request):
     usercount = DBUser.objects.all().count()
     chapscount = Chapels.objects.all().count()
     mil = Members.objects.all().order_by('-id')[:5]
-    db_usered = DBUser.objects.all().order_by('id')[:20]
+    db_usered = DBUser.objects.all().order_by('-id')[:20]
 
     context = {
         'memcounts': memcounts,
