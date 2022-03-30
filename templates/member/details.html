@@ -43,7 +43,7 @@
                   </li>
                 </ul>
 
-                <a href="#" class="btn btn-primary btn-block"><b>{{ mem_det.chapel }}</b></a>
+                <a href="{% url 'ChurchDashboard:details_chapels_urls' mem_det.chapel.id%}" class="btn btn-primary btn-block"><b>{{ mem_det.chapel }}</b></a>
               </div>
               <!-- /.card-body -->
             </div>
