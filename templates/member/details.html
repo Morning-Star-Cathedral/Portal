@@ -29,7 +29,7 @@
 
                 <h4 class="profile-username text-center">{{ mem_det.first_name}} {{ mem_det.other_name |default_if_none:""  }} {{ mem_det.last_name }}</h4>
 
-                <p class="text-muted text-center">{{ mem_det.group}}</p>
+                  <a href="{% url 'ChurchDashboard:details_group_urls' mem_det.group.id%}" class="btn btn-default btn-block btn-flat">{{ mem_det.group }}</a>
 
                 <ul class="list-group list-group-unbordered mb-3">
                   <li class="list-group-item">
@@ -66,16 +66,16 @@
 
                 <strong><i class="fas fa-map-marker-alt mr-1"></i> Location</strong>
 
-                <p class="text-muted">{{ mem_det.area_of_residence }}</p>
+                <p class="text-muted">{{ mem_det.area_of_residence |default_if_none:""}}</p>
 
                 <hr>
 
-                <strong><i class="fas fa-pencil-alt mr-1"></i> Skills</strong>
+                <strong><i class="fas fa-lg fa-phone"></i> Phone</strong>
 
                 <p class="text-muted">
-                  <span class="tag tag-danger">UI Design</span>
-                  <span class="tag tag-success">Coding</span>
-                  <span class="tag tag-info">Javascript</span>
+                  <span class="tag tag-danger">{{ mem_det.phone_number}}</span><br>
+                  <span class="tag tag-success">{{ mem_det.whatsapp_number|default_if_none:""}}</span>
+                  <span class="tag tag-info">{{ mem_det.other_phone_number|default_if_none:"" }}</span><br>
                   <span class="tag tag-warning">PHP</span>
                   <span class="tag tag-primary">Node.js</span>
                 </p>
