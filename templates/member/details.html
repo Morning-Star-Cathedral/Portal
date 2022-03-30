@@ -29,7 +29,7 @@
 
                 <h4 class="profile-username text-center">{{ mem_det.first_name}} {{ mem_det.other_name |default_if_none:""  }} {{ mem_det.last_name }}</h4>
 
-                <p class="text-muted text-center">Software Engineer</p>
+                <p class="text-muted text-center">{{ mem_det.group}}</p>
 
                 <ul class="list-group list-group-unbordered mb-3">
                   <li class="list-group-item">
@@ -43,7 +43,7 @@
                   </li>
                 </ul>
 
-                <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>
+                <a href="#" class="btn btn-primary btn-block"><b>{{ mem_det.chapel }}</b></a>
               </div>
               <!-- /.card-body -->
             </div>
