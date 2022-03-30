@@ -56,21 +56,21 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <strong><i class="fas fa-book mr-1"></i> Education</strong>
+                <i class="fas fa-lg fa-building"></i> GPS Address
 
                 <p class="text-muted">
-                  B.S. in Computer Science from the University of Tennessee at Knoxville
+                  {{ mem_det.gps_address |default_if_none:""}}
                 </p>
 
                 <hr>
 
-                <strong><i class="fas fa-map-marker-alt mr-1"></i> Location</strong>
+                <i class="fas fa-map-marker-alt mr-1"></i> Location
 
                 <p class="text-muted">{{ mem_det.area_of_residence |default_if_none:""}}</p>
 
                 <hr>
 
-                <strong><i class="fas fa-lg fa-phone"></i> Phone</strong>
+               <i class="fas fa-lg fa-phone"></i> Phone
 
                 <p class="text-muted">
                   <span class="tag tag-danger">{{ mem_det.phone_number}}</span><br>
