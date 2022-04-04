@@ -56,7 +56,7 @@ class Members(models.Model):
     sex = models.CharField(max_length=6, blank=True, null=True)
     chapel = models.ForeignKey(Chapels, models.DO_NOTHING, related_name='chapel_members')
     group = models.ForeignKey(Groups, models.DO_NOTHING, related_name='group_members')
-    dob = models.DateTimeField(blank=True, null=True)
+    dob = models.DateField(blank=True, null=True)
     phone_number = models.CharField(unique=True, max_length=255)
     whatsapp_number = models.CharField(max_length=255, blank=True, null=True)
     other_phone_number = models.CharField(max_length=255, blank=True, null=True)

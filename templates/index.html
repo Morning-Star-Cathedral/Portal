@@ -131,16 +131,9 @@
                                                         <th>PHONE NUMBER</th>
                                                     </tr>
                                                     </thead>
-                                                    <tbody>
-                                                    {% for mil in mil %}
-                                                        <tr>
-                                                            <td>{{ mil.id }}</td>
-                                                            <td>{{ mil.last_name |lower|capfirst }}</td>
-                                                            <td>{{ mil.first_name |lower|capfirst }}</td>
-                                                            <td>{{ mil.phone_number }}&nbsp;</td>
-                                                        </tr>
-                                                    {% endfor %}
+                                                    <tbody hx-get="{% url 'ChurchDashboard:lazyloadmem' %}" hx-trigger="load">
 
+{#                                                  {%  include 'membersindex.html' %}#}
                                                     </tbody>
 
                                                 </table>

@@ -2,6 +2,7 @@ from django.shortcuts import get_object_or_404, render, redirect
 from ChurchDashboard.models import AttendanceSummaries, Attendances, Members, Groups, Chapels, DBUser
 from django.core.cache import cache
 from .forms import CreateGroupForm, CreateChapelForm
+import json
 
 
 # Create your views here.
@@ -11,7 +12,6 @@ def index_page(request):
     groupcount = Groups.objects.all().count()
     usercount = DBUser.objects.all().count()
     chapscount = Chapels.objects.all().count()
-    mil = Members.objects.all().order_by('-id')[:5]
     db_usered = DBUser.objects.all().order_by('-id')[:20]
 
     context = {
@@ -19,10 +19,20 @@ def index_page(request):
         'groupcount': groupcount,
         'usercount': usercount,
         'chapscount': chapscount,
-        'mil': mil,
-        'db_usered': db_usered
+        'db_usered': db_usered,
+
     }
     return render(request, 'index.html', context)
+
+
+
+def memberindex(request):
+    mil = Members.objects.all().order_by('-id')[:5]
+
+    context = {
+        'mil': mil
+    }
+    return render(request, 'membersindex.html', context)
 
 
 # chapel=chapel_page, availabe=True
@@ -36,6 +46,17 @@ def list_view_member(request):
         # 'groud': groud,
     }
     return render(request, 'member/list.html', context)
+
+
+
+# def db_userindex(request):
+#     dbusered = DBUser.objects.all().order_by('-id')[:20]
+#
+#     context = {
+#         'dbusered': dbusered
+#     }
+#     return render(request, 'Dbuserlistindex.html', context)
+
 
 
 # list attendance ordered by created at
