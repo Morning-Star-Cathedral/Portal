@@ -6,12 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block title %}{{ section.title }}{% endblock %}</title>
     <link rel="shortcut icon" href="{% static 'dist/img/ctaclogo.png' %}">
-    <link rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <link rel="stylesheet" href="{% static 'plugins/fontawesome-free/css/all.min.css' %}">
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <link rel="stylesheet"
-          href="{% static 'plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css' %}">
+    <link rel="stylesheet" href="{% static 'plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css' %}">
      <link rel="stylesheet" href="{% static 'plugins/icheck-bootstrap/icheck-bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'dist/css/adminlte.min.css' %}">
     <link rel="stylesheet" href="{% static 'plugins/dropzone/min/dropzone.min.css' %}">
@@ -42,7 +40,6 @@ a:hover {
                  <li class="nav-item d-none d-sm-inline-block">
                      {{ user.lastname }}
                 </li>
-
             </ul>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
@@ -96,7 +93,6 @@ a:hover {
                                 PC Groups
                             </p>
                         </a>
-
                     </li>
                     <li class="nav-item">
                         <a href="{% url 'ChurchDashboard:list_grouplead_url' %}" class="nav-link">
@@ -105,27 +101,22 @@ a:hover {
                                 Group Heads
                             </p>
                         </a>
-
                     </li>
                     <li class="nav-item">
                         <a href="{% url 'ChurchDashboard:list_chapel_url' %}" class="nav-link">
                              <i class="far fa-building"></i> &nbsp;
                             <p>
                                 Chapel
-
                             </p>
                         </a>
-
                     </li>
                      <li class="nav-item">
                         <a href="{% url 'ChurchDashboard:list_attendance_url' %}" class="nav-link">
                             <i class="nav-icon far fa-plus-square"></i> &nbsp;
                             <p>
                                 Attendances
-
                             </p>
                         </a>
-
                     </li>
                     <li class="nav-item">
                         <a href="{% url 'ChurchDashboard:list_summary_attendance_url' %}" class="nav-link">
@@ -134,11 +125,7 @@ a:hover {
                                 Attendances Summary
                             </p>
                         </a>
-
                     </li>
-
-
-
                     <li class="nav-item">
                         <a href="#" class="nav-link">
                             <i class="nav-icon far fa-plus-square"></i>
@@ -186,15 +173,10 @@ a:hover {
                                             <p>Forgot Password v2</p>
                                         </a>
                                     </li>
-                                   =
                                 </ul>
                             </li>
-
-
                         </ul>
                     </li>
-
-
                 </ul>
             </nav>
             </div>
@@ -244,6 +226,7 @@ a:hover {
 <script src="{% static 'plugins/datatables-buttons/js/buttons.html5.min.js' %}"></script>
 <script src="{% static 'plugins/datatables-buttons/js/buttons.print.min.js' %}"></script>
 <script src="{% static 'plugins/datatables-buttons/js/buttons.colVis.min.js' %}"></script>
+<script src="https://unpkg.com/htmx.org@1.7.0"></script>
 <script>
     $(function () {
         $("#example1").DataTable({
