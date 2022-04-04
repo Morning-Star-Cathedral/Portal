@@ -10,13 +10,21 @@
                     <div class="col-sm-6">
                         <h1> {{ mem_det.first_name }}&nbsp;{{ mem_det.other_name|default_if_none:"" }}&nbsp;{{ mem_det.last_name }}</h1>
                     </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="{% url 'ChurchDashboard:home_page' %}">Home</a></li>
+                            <li class="breadcrumb-item"><a href="{% url 'ChurchDashboard:list_member_url' %}">Members</a></li>
+                            <li class="breadcrumb-item active">{{ mem_det.first_name }}&nbsp;{{ mem_det.other_name|default_if_none:"" }}&nbsp;{{ mem_det.last_name }}</li>
+                        </ol>
+                    </div>
                 </div>
             </div>
+
         </section>
     <section class="content">
       <div class="container-fluid">
         <div class="row">
-          <div class="col-md-3">
+          <div class="col-md-6">
 
             <!-- Profile Image -->
             <div class="card card-primary card-outline">
@@ -33,58 +41,58 @@
 
                 <ul class="list-group list-group-unbordered mb-3">
                   <li class="list-group-item">
-                    <b>Title</b> <a class="float-right">{{ mem_det.title|capfirst |default_if_none:""}}</a>
+                    <b>Title</b> <p class="float-right" class="text-black">{{ mem_det.title|capfirst |default_if_none:""}}</p>
                   </li>
                   <li class="list-group-item">
-                    <b>Gender</b> <a class="float-right">{{ mem_det.sex |capfirst|default_if_none:""}}</a>
+                    <b>Gender</b> <p class="float-right" class="text-black">{{ mem_det.sex |capfirst|default_if_none:""}}</p>
                   </li>
                   <li class="list-group-item">
-                    <b>Date of Birth</b> <a class="float-right">{{ mem_det.dob|date:"d-m-Y"  }}</a>
+                    <b>Date of Birth</b> <p class="float-right" class="text-black">{{ mem_det.dob|date:"d-m-Y"  }}</p>
                   </li>
                 </ul>
 
                 <a href="{% url 'ChurchDashboard:details_chapels_urls' mem_det.chapel.id%}" class="btn btn-primary btn-block"><b>{{ mem_det.chapel }}</b></a>
               </div>
-              <!-- /.card-body -->
-            </div>
-            <!-- /.card -->
 
-            <!-- About Me Box -->
-            <div class="card card-primary">
+            </div>
+
+          </div>
+          <div class="col-md-6">
+            <div class="card">
+
+{#             <div class="card card-primary">#}
               <div class="card-header">
-                <h3 class="card-title">About Me</h3>
+                <h3 class="card-title">Residents & Contact</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
                 <i class="fas fa-lg fa-building"></i> GPS Address
 
-                <p class="text-muted">
+                <p class="text-black">
                   {{ mem_det.gps_address |default_if_none:""}}
                 </p>
 
                 <hr>
 
-                <i class="fas fa-map-marker-alt mr-1"></i> Location
+                <i class="fas fa-map-marker-alt mr-1"></i> House Adress
 
-                <p class="text-muted">{{ mem_det.area_of_residence |default_if_none:""}}</p>
+                &nbsp;<p class="text-black"> &nbsp;{{ mem_det.area_of_residence |default_if_none:""}}</p>
 
                 <hr>
 
-               <i class="fas fa-lg fa-phone"></i> Phone
+              &nbsp; <i class="fas fa-lg fa-phone"></i> &nbsp;Phone
 
-                <p class="text-muted">
+                <p class="text-black">
                   <span class="tag tag-danger">{{ mem_det.phone_number}}</span><br>
                   <span class="tag tag-success">{{ mem_det.whatsapp_number|default_if_none:""}}</span>
                   <span class="tag tag-info">{{ mem_det.other_phone_number|default_if_none:"" }}</span><br>
                 </p>
-
-                <hr>
-
               </div>
+            </div>
             </div>
           </div>
         </div>
-          </div>
+      </div>
     </section>
 
     </div>
