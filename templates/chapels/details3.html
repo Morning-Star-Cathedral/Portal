@@ -56,24 +56,72 @@
                                     <table id="example1" class="table table-bordered table-striped">
                                         <thead>
                                         <tr>
-                                            <th>ID</th>
-                                            <th> NAME</th>
-                                            <th>EMAIL</th>
+                                            <th>Last name</th>
+                                            <th> Other name</th>
+                                            <th>First name</th>
+                                            <th> Group name</th>
+                                            <th>Phone number</th>
+{#                                            <th>chapel</th>#}
 
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        {% for db_users in db_users %}
+                                        {% for cha_mem in cha_mem %}
                                             <tr>
-                                                <td>{{ db_users.id }}</td>
-                                                <td> {{ db_users.name }}</td>
-                                                <td>{{ db_users.email }}</td>
+                                                <td>{{ cha_mem.last_name }}</td>
+                                                <td> {{ cha_mem.other_name|default_if_none:"" }}</td>
+                                                <td>{{ cha_mem.first_name }}</td>
+                                                 <td>{{ cha_mem.group.name }}</td>
+                                                  <td>{{ cha_mem.phone_number }}</td>
+{#                                                  <td>{{ cha_mem.chapel }}</td>#}
 
                                             </tr>
                                         {% endfor %}
 
                                         </tfoot>
                                     </table>
+                                &nbsp;
+                                    <div class="card">
+                                        <div class="card-header border-transparent">
+                                            <h3 class="card-title">Members of {{ chadetails.name }}</h3>
+                                            <div class="card-body p-0">
+                                                <div class="table-responsive">
+                                                    <table class="table m-0">
+                                                        <thead>
+                                                        <tr>
+                                                            <th>ID</th>
+                                                            <th>Name</th>
+                                                            <th>Email</th>
+                                                            <th> Group</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                       {% for db_users in db_users %}
+                                            <tr>
+                                                <td>{{ db_users.id }}</td>
+                                                <td> {{ db_users.name }}</td>
+                                                <td>{{ db_users.email }}</td>
+                                               <td>{{ db_users.group.name }}</td>
+
+                                            </tr>
+                                        {% endfor %}
+
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <!-- /.table-responsive -->
+                                            </div>
+                                            <!-- /.card-body -->
+                                            <div class="card-footer clearfix">
+                                                <a href="javascript:void(0)" class="btn btn-sm btn-info float-left">Place
+                                                    New Order</a>
+                                                <a href="javascript:void(0)"
+                                                   class="btn btn-sm btn-secondary float-right">View All Orders</a>
+                                            </div>
+                                            <!-- /.card-footer -->
+                                        </div>
+                                        <!-- /.card -->
+                                    </div>
                                 </div>
                             </div>
                         </div>

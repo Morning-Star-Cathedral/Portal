@@ -20,9 +20,6 @@ urlpatterns = [
     path('memlist/', memberindex, name='lazyloadmem'),
     # path('dbuserlistindex/', db_userindex, name='mems'),
     path('groups/<int:pk>/delete', group_delete, name='delete_group'),
-    path('groups/<int:pk>/delete', dbuser_delete, name = 'delete_group_head'),
-
-
-
+    path('groups/<int:pk>/delete', dbuser_delete, name='delete_group_head'),
 
 ]

@@ -24,6 +24,7 @@
                                         <tr>
                                             <th>ID</th>
                                             <th> CHAPEL</th>
+                                            <th>DATE ADDED</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -32,6 +33,7 @@
                                                 <td>{{ chaps.id }}</td>
                                                 <td><a href="{% url 'ChurchDashboard:details_chapels_urls' chaps.id %}"
                                                        class="link-black">{{ chaps.name }}</a></td>
+                                                <td>{{ chaps.created_at| date:"d M, Y"}}</td>
 
                                             </tr>
                                         {% endfor %}

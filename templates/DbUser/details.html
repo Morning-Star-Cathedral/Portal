@@ -19,7 +19,6 @@
                         </ol>
                     </div>
                 </div>
-
             </div>
         </section>
         <div class="card-body">
@@ -48,22 +47,25 @@
                                     <table id="example1" class="table table-bordered table-striped">
                                         <thead>
                                         <tr>
-                                            <th>ID</th>
-                                            <th> NAME</th>
-                                            <th>EMAIL</th>
-
+                                            <th> FIRST NAME</th>
+                                            <th>OTHER NAME</th>
+                                            <th>LAST NAME</th>
+                                            <th>PHONE NUMBER</th>
+                                            <th>CHAPEL</th>
+                                            <th>HOUSE ADDRESS</th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         {% for gro_membs in gro_membs %}
                                             <tr>
-                                                <td>{{ gro_membs.id }}</td>
-                                                <td>{{ gro_membs.last_name }}</td>
                                                 <td>{{ gro_membs.first_name }}</td>
-
+                                                <td>{{ gro_membs.other_name |default_if_none:""  }}</td>
+                                                <td>{{ gro_membs.last_name }}</td>
+                                                <td>{{ gro_membs.phone_number }}</td>
+                                                <td>{{ gro_membs.chapel }}</td>
+                                                <td>{{ gro_membs.area_of_residence|default_if_none:""  }}</td>
                                             </tr>
                                         {% endfor %}
-
                                         </tfoot>
                                     </table>
                                 </div>
@@ -73,6 +75,5 @@
                 </div>
             </div>
         </section>
-
     </div>
 {% endblock %}
