@@ -16,3 +16,9 @@ class CreateChapelForm(forms.ModelForm):
         fields = (
             'name',
         )
+
+
+class CreateMemberForm(forms.ModelForm):
+    class Meta:
+        model = Members
+        feilds = ('_all_')
