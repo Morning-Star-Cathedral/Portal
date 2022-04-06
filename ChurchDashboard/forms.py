@@ -18,7 +18,7 @@ class CreateChapelForm(forms.ModelForm):
         )
 
 
-class CreateMemberForm(forms.ModelForm):
-    class Meta:
-        model = Members
-        feilds = ('_all_')
+# class CreateMemberForm(forms.ModelForm):
+#     class Meta:
+#         model = Members
+#         feilds = ('_all_')

@@ -76,15 +76,15 @@
                                             <td>{{ gro_membs.phone_number }}</td>
                                             <td>{{ gro_membs.chapel }}</td>
                                            <td>{% for userlist in userlist %}{{ userlist.name }}{% endfor %}</td>
-
-
                                         </tr>
                                         {% endfor %}
-
-
-
                                         </tfoot>
                                     </table>
+                                 <div class="card-footer clearfix">
+                                    <a href="{% url 'ChurchDashboard:delete_group' grodetails.id %}"
+                                       class="btn btn-sm btn-info float-left">Delete Group</a>
+
+                                </div>
                                 </div>
                             </div>
                         </div>

@@ -206,12 +206,12 @@ def create_view_group(request):
     return render(request, "groups/create.html", context)
 
 
-def group_delete(request, pk):
-    delete_group = get_object_or_404(Groups, pk=pk)
-    if request.method == "POST":
-        delete_group.delete()
-        return redirect('ChurchDashboard:list_group_url')
-    return render(request, 'groups/delete.html', context={})
+# def group_delete(request, pk):
+#     delete_group = get_object_or_404(Groups, pk=pk)
+#     if request.method == "POST":
+#         delete_group.delete()
+#         return redirect('ChurchDashboard:list_group_url')
+#     return render(request, 'groups/delete.html', context={})
 
 
 def create_chapel(request):
@@ -224,3 +224,21 @@ def create_chapel(request):
         return redirect('ChurchDashboard:list_chapel_url')
     context['chapel_create'] = chapel_create
     return render(request, 'chapels/add.html', context)
+
+
+def group_delete(request, pk):
+    delete_group = get_object_or_404(Groups, pk=pk)
+    if request.method == "POST":
+        delete_group.delete()
+        return redirect('ChurchDashboard:list_group_url')
+    context = {}
+    return render(request, 'groups/delete.html', context)
+
+
+def dbuser_delete(request, id):
+    delete_group = get_object_or_404(Groups, id=id)
+    if request.method == "POST":
+        delete_dbuser.delete()
+        return redirect('ChurchDashboard:list_grouplead_url')
+    context = {}
+    return render(request, 'DbUser/delete.html', context)

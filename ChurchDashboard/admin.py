@@ -39,7 +39,7 @@ class CustomUserAdmin(UserAdmin):
 @admin.register(DBUser)
 class DBUserAdmin(admin.ModelAdmin):
     list_display = ['name', 'chapel', 'group']
-    fields = ['title', 'name', 'chapel', 'group']
+    fields = ['title', 'name', 'email', 'chapel', 'group']
     search_fields = ['name']
 
 
