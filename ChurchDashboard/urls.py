@@ -19,6 +19,7 @@ urlpatterns = [
     path('addchapel/', create_chapel, name='add_chapel_url'),
     path('memlist/', memberindex, name='lazyloadmem'),
     # path('dbuserlistindex/', db_userindex, name='mems'),
+    path('groups/<int:pk>/ ',group_delete,name='delete_group'),
 
 
 

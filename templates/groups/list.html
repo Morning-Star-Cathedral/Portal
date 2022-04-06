@@ -9,7 +9,12 @@
                 <div class="row mb-2">
                     <div class="col-sm-6">
                         <h1>PC Groups</h1>
-
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="{% url 'ChurchDashboard:home_page' %}">Home</a></li>
+                            <li class="breadcrumb-item active">Groups</li>
+                        </ol>
                     </div>
                 </div>
             </div>
@@ -20,79 +25,41 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
-                            <div class="card">
-                                <div class="card-body">
-                                    <table id="example1" class="table table-bordered table-striped">
-                                        <thead>
+                            <div class="card-body">
+                                <table id="example1" class="table table-bordered table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th> GROUP NAME</th>
+                                        <th>Date Added</th>
+
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for gro in gro %}
                                         <tr>
-                                            <th>ID</th>
-                                            <th> GROUP NAME</th>
-                                            <th></th>
+                                            <td>{{ gro.id }}</td>
+                                            <td><a href="{% url  'ChurchDashboard:details_group_urls' gro.id %}"
+                                                   class="link-black">{{ gro.name }}</a></td>
+                                           <td>{{ gro.created_at| date:"d M, Y"}}</td>
+
                                         </tr>
-                                        </thead>
-                                        <tbody>
-                                        {% for gro in gro %}
-                                            <tr>
-                                                <td>{{ gro.id }}</td>
-                                                <td>{{ gro.name }}</td>
-                                                <td >
-{#                                                <a href="{% url 'ChurchDashboard:details_group_urls' gro.id %}">#}
-                                                  <a href="#">
-                                                    <i class="fa-solid fa-eye" onclick="viewGroup()"></i>
-                                                    </i>
 
-                                                </a>
-                                                <a  href="#">
-                                                    <i class="fas fa-pencil-alt">
-                                                    </i>
+                                    {% endfor %}
 
-                                                </a>
-                                                <a  href="#">
-                                                    <i class="fas fa-trash">
-                                                    </i>
-                                                </a>
-                                            </td>
-                                            </tr>
+                                    </tfoot>
+                                </table>
+                                <div class="card-footer clearfix">
+                                    <a href="{% url 'ChurchDashboard:add_group_url' %}"
+                                       class="btn btn-sm btn-info float-left">New Care Group</a>
 
-                                        {% endfor %}
-
-                                        </tfoot>
-                                    </table>
-                                    <div class="card-footer clearfix">
-                                        <a href="{% url 'ChurchDashboard:add_group_url' %}"
-                                           class="btn btn-sm btn-info float-left">New Care Group</a>
-
-                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </section>
     </div>
-    </section>
-
-    <div class="modal fade" id="modal-lg">
-        <div class="modal-dialog modal-lg">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h4 class="modal-title">Large Modal</h4>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <p>One fine body&hellip;</p>
-            </div>
-            <div class="modal-footer justify-content-between">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-          </div>
-          <!-- /.modal-content -->
-        </div>
-        <!-- /.modal-dialog -->
-      </div>
-      <!-- /.modal -->
 
 {% endblock %}

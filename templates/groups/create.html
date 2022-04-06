@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-  <div class="content-wrapper">
+  <div class="content-wrapper" class="modal-content">
     <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
@@ -14,7 +14,7 @@
       <div class="row">
         <div class="col-md-6">
           <div class="card card-primary">
-            <div class="card-header">
+            <div class="modal-header">
               <h3 class="card-title">ADD GROUP </h3>
               <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip"
@@ -22,9 +22,9 @@
                   <i class="fas fa-minus"></i></button>
               </div>
             </div>
-            <div class="card-body">
+            <div class="modal-body">
               <div class="form-group">
-                <form method="POST" action="">
+                <div method="POST" action="">
                   {% csrf_token %}
                   <div class="form-group">
                     <label>Group Name </label>
@@ -34,8 +34,9 @@
                       class="form-control"
                       placeholder="Enter group name">
                   </div>
-
-                  <button type="submit" class="btn btn-primary">Submit</button>
+                   <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                   </div>
                 </form>
               </div>
             </div>

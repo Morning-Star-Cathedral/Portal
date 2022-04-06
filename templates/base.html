@@ -186,7 +186,10 @@ a:hover {
     {% block content %}
 
     {% endblock %}
-
+    <div id ="modal" class="modal fade" tabindex="-1">
+        <div class="modal-dialog">
+        </div>
+    </div>
 
     <footer class="main-footer" >
         <b>PastCare</b> &nbsp;
@@ -228,6 +231,7 @@ a:hover {
 <script src="{% static 'plugins/datatables-buttons/js/buttons.colVis.min.js' %}"></script>
 {#<script src="https://unpkg.com/htmx.org@1.7.0"></script>#}
  <script src="https://unpkg.com/htmx.org@1.6.1"></script>
+<script src = "{% static 'dialog.js' %}" ></script>
 <script>
     $(function () {
         $("#example1").DataTable({

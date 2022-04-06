@@ -47,7 +47,7 @@
                     <b>Gender</b> <p class="float-right" class="text-black">{{ mem_det.sex |capfirst|default_if_none:""}}</p>
                   </li>
                   <li class="list-group-item">
-                    <b>Date of Birth</b> <p class="float-right" class="text-black">{{ mem_det.dob|date:"d-m-Y"  }}</p>
+                    <b>Date of Birth</b> <p class="float-right" class="text-black">{{ mem_det.dob|date:"d M, Y"  }}</p>
                   </li>
                 </ul>
 
@@ -60,7 +60,7 @@
           <div class="col-md-6">
             <div class="card">
 
-{#             <div class="card card-primary">#}
+
               <div class="card-header">
                 <h3 class="card-title">Residents & Contact</h3>
               </div>

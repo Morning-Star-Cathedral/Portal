@@ -25,7 +25,6 @@ def index_page(request):
     return render(request, 'index.html', context)
 
 
-
 def memberindex(request):
     mil = Members.objects.all().order_by('-id')[:5]
 
@@ -48,7 +47,6 @@ def list_view_member(request):
     return render(request, 'member/list.html', context)
 
 
-
 # def db_userindex(request):
 #     dbusered = DBUser.objects.all().order_by('-id')[:20]
 #
@@ -56,7 +54,6 @@ def list_view_member(request):
 #         'dbusered': dbusered
 #     }
 #     return render(request, 'Dbuserlistindex.html', context)
-
 
 
 # list attendance ordered by created at
