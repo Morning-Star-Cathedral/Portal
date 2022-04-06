@@ -25,7 +25,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="col-lg-3 col-6">
                         <div class="small-box bg-success">
                             <div class="inner">
@@ -63,13 +62,6 @@
                         </div>
                     </div>
                 </div>
-                <section class="content-header">
-                    <div class="container-fluid">
-                        <div class="row mb-2">
-
-                        </div>
-                    </div>
-                </section>
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">Pastorial Group Heads</h3></div>
@@ -78,33 +70,33 @@
                             <div class="col-12">
                                 <div class="row">
                                     <div class="col-12">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <table id="example2" class="table table-bordered table-hover">
-                                                    <thead>
+                                        <div class="card-body">
+                                            <table id="example2" class="table table-bordered table-hover">
+                                                <thead>
+                                                <tr>
+                                                    <th>ID</th>
+                                                    <th>PCS GROUP HEAD</th>
+                                                    <th>GROUP NAME</th>
+                                                    <th>CHAPEL</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                {% for db_usered in db_usered %}
                                                     <tr>
-                                                        <th>ID</th>
-                                                        <th>PCS GROUP HEAD</th>
-                                                        <th>GROUP NAME</th>
-                                                        <th>CHAPEL</th>
+                                                        <td>{{ db_usered.id }}</td>
+                                                        <td>{{ db_usered.name }}</td>
+                                                        <td>{{ db_usered.group }}</td>
+                                                        <td>{{ db_usered.chapel }}&nbsp;</td>
                                                     </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                    {% for db_usered in db_usered %}
-                                                        <tr>
-                                                            <td>{{ db_usered.id }}</td>
-                                                            <td>{{ db_usered.name }}</td>
-                                                            <td>{{ db_usered.group }}</td>
-                                                            <td>{{ db_usered.chapel }}&nbsp;</td>
-                                                        </tr>
-                                                    {% endfor %}
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                         <div class="card-footer clearfix">
-                <a href="{% url 'ChurchDashboard:list_grouplead_url' %}" class="btn btn-sm btn-info float-left">View All Group Heads</a>
-                <a href="{% url 'ChurchDashboard:add_group_url' %}" class="btn btn-sm btn-secondary float-right">New Care Group</a>
-              </div>
+                                                {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="card-footer clearfix">
+                                            <a href="{% url 'ChurchDashboard:list_grouplead_url' %}"
+                                               class="btn btn-sm btn-info float-left">View All Group Heads</a>
+                                            <a href="{% url 'ChurchDashboard:add_group_url' %}"
+                                               class="btn btn-sm btn-secondary float-right">New Care Group</a>
                                         </div>
                                     </div>
                                 </div>
@@ -112,32 +104,30 @@
                         </div>
                     </div>
                 </div>
-                <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">Pastorial Care Latest Members </h3></div>
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <table id="example2" class="table table-bordered table-hover">
-                                                    <thead>
-                                                    <tr>
-                                                        <th>ID</th>
-                                                        <th>LAST NAME</th>
-                                                        <th>FIRST NAME</th>
-                                                        <th>PHONE NUMBER</th>
-                                                    </tr>
-                                                    </thead>
-                                                    <tbody hx-get="{% url 'ChurchDashboard:lazyloadmem' %}" hx-trigger="load">
-
-{#                                                  {%  include 'membersindex.html' %}#}
-                                                    </tbody>
-
-                                                </table>
-                                            </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Pastorial Care Latest Members </h3></div>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <table id="example2" class="table table-bordered table-hover">
+                                                <thead>
+                                                <tr>
+                                                    <th>ID</th>
+                                                    <th>LAST NAME</th>
+                                                    <th>FIRST NAME</th>
+                                                    <th>PHONE NUMBER</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody hx-get="{% url 'ChurchDashboard:lazyloadmem' %}"
+                                                       hx-trigger="load">
+                                                </tbody>
+                                            </table>
                                         </div>
                                     </div>
                                 </div>
@@ -148,5 +138,4 @@
             </div>
         </section>
     </div>
-
 {% endblock %}
