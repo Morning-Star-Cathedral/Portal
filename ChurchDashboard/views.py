@@ -178,26 +178,26 @@ def groups_details(request, pk):
     }
     return render(request, 'groups/details3.html', context)
 
-
-def db_detail(request, id):
-    # db_details = DBUser.objects.filter(group__id=pk)
-    gro_membs_count = Members.objects.filter(group__id=DBUser.group).count()
-    gro_membs = Members.objects.filter(group__id=id)
-    if cache.get(id):
-        db_details = cache.get(id)
-    else:
-        try:
-            db_details = DBUser.objects.get(id=id)
-            cache.set(id, db_details)
-        except DBUser.DoesNotExist:
-            return redirect('ChurchDashboard:home_page')
-    context = {
-        'db_details': db_details,
-        'gro_membs_count': gro_membs_count,
-         'gro_membs': gro_membs
-        # 'mens': mens
-    }
-    return render(request, 'DbUser/details.html', context)
+#
+# def db_detail(request, id):
+#     db_details = DBUser.objects.filter(group__id=id)
+#     gro_membs_count = Members.objects.filter(group__id=DBUser.group).count()
+#     # gro_membs = Members.objects.filter(group__id=id) & DBUser.objects.filter(group__id =Members.)
+#     if cache.get(id):
+#         db_details = cache.get(id)
+#     else:
+#         try:
+#             db_details = DBUser.objects.get(id=id)
+#             cache.set(id, db_details)
+#         except DBUser.DoesNotExist:
+#             return redirect('ChurchDashboard:home_page')
+#     context = {
+#         'db_details': db_details,
+#         'gro_membs_count': gro_membs_count,
+#          # 'gro_membs': gro_membs
+#         # 'mens': mens
+#     }
+#     return render(request, 'DbUser/details.html', context)
 
 
 def create_view_group(request):
@@ -209,6 +209,8 @@ def create_view_group(request):
 
     context['groupcreate'] = groupcreate
     return render(request, "groups/create.html", context)
+
+
 
 
 # def group_delete(request, pk):
