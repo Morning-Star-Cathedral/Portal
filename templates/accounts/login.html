@@ -1,7 +1,24 @@
 {% block content %}
- <form method="post">
-                    {% csrf_token %}
-                    {{ form.as_p }}
-                    <button type="submit">Log In</button>
-                </form>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+    <form method="post" action="{% url 'accounts:login_user' %}">
+
+    {% csrf_token %}
+        <label>Email</label><input type="text" name="username" required><br>
+        <label>Password</label><input type="password" name="password" required>
+        <input type="submit" value="Login">
+    </form>
+
+</body>
+</html>
+
 {% endblock %}

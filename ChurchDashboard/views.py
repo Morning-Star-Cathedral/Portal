@@ -27,9 +27,11 @@ def index_page(request):
 
 def memberindex(request):
     mil = Members.objects.all().order_by('-id')[:5]
+    # nil = DBUser.objects.filter(group__id = Members.group)
 
     context = {
-        'mil': mil
+        'mil': mil,
+        # 'nil': nil
     }
     return render(request, 'membersindex.html', context)
 
@@ -79,8 +81,10 @@ def attendance_summmaries_list(request):
 # group list
 def groups_list(request):
     gro = Groups.objects.all()
+    # userlist = DBUser.objects.filter(group__id=gro.id)
     context = {
         'gro': gro
+        # 'userlist': userlist
     }
     return render(request, 'groups/list.html', context)
 
@@ -177,7 +181,7 @@ def groups_details(request, pk):
 
 def db_detail(request, id):
     # db_details = DBUser.objects.filter(group__id=pk)
-    gro_membs_count = Members.objects.filter(group__id=id).count()
+    gro_membs_count = Members.objects.filter(group__id=DBUser.group).count()
     gro_membs = Members.objects.filter(group__id=id)
     if cache.get(id):
         db_details = cache.get(id)

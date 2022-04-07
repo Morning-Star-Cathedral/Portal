@@ -36,7 +36,7 @@
                                         <tr>
                                             <td>{{ db_user.id }}</td>
                                             <td>{{ db_user.title |default_if_none:"" | capfirst }}</td>
-                                            <td><a href="{% url 'ChurchDashboard:details_grouplead_urls' db_user.id%}" class="link-black"> {{ db_user.name }}</a></td>
+                                            <td> {{ db_user.name }}</td>
                                             <td>{{ db_user.group }}</td>
                                             <td>{{ db_user.chapel }}</td>
                                         </tr>
