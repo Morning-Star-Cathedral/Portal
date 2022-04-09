@@ -12,7 +12,7 @@ def index_page(request):
     groupcount = Groups.objects.all().count()
     usercount = DBUser.objects.all().count()
     chapscount = Chapels.objects.all().count()
-    db_usered = DBUser.objects.all().order_by('-id')[:20]
+    db_usered = DBUser.objects.all().order_by('-id')[:20].select_related('chapel', 'group')
 
     context = {
         'memcounts': memcounts,
@@ -26,7 +26,7 @@ def index_page(request):
 
 
 def memberindex(request):
-    mil = Members.objects.all().order_by('-id')[:5]
+    mil = Members.objects.all().order_by('-id')[:5].select_related('group', 'chapel')
     # nil = DBUser.objects.filter(group__id = Members.group)
 
     context = {
@@ -39,7 +39,7 @@ def memberindex(request):
 # chapel=chapel_page, availabe=True
 
 def list_view_member(request):
-    memlist = Members.objects.all()
+    memlist = Members.objects.all().select_related('chapel', 'group')
     # groud = DBUser.objects.filter(group__id=Members.group)
 
     context = {
@@ -61,7 +61,7 @@ def list_view_member(request):
 # list attendance ordered by created at
 # Ruben should look at the data being passed to service date ie am receiving a char instead of a date field
 def list_view_attendance(request):
-    read = Attendances.objects.all().order_by('service_date')
+    read = Attendances.objects.all().order_by('service_date').select_related('member')
     context = {
         'read': read
 
@@ -71,7 +71,7 @@ def list_view_attendance(request):
 
 # attendance summary list ordered by created at asecending
 def attendance_summmaries_list(request):
-    att_summary = AttendanceSummaries.objects.all().order_by('attendance_date')
+    att_summary = AttendanceSummaries.objects.all().order_by('attendance_date').select_related('group')
     context = {
         'att_summary': att_summary
     }
@@ -100,7 +100,7 @@ def chapel_list(request):
 
 # DB USer list
 def db_user_list(request):
-    db_user = DBUser.objects.all().order_by('created_at')
+    db_user = DBUser.objects.all().order_by('created_at').select_related('group', 'chapel')
     context = {
         'db_user': db_user
     }
@@ -178,6 +178,7 @@ def groups_details(request, pk):
     }
     return render(request, 'groups/details3.html', context)
 
+
 #
 # def db_detail(request, id):
 #     db_details = DBUser.objects.filter(group__id=id)
@@ -209,8 +210,6 @@ def create_view_group(request):
 
     context['groupcreate'] = groupcreate
     return render(request, "groups/create.html", context)
-
-
 
 
 # def group_delete(request, pk):
