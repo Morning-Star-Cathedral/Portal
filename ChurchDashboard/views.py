@@ -3,10 +3,12 @@ from ChurchDashboard.models import AttendanceSummaries, Attendances, Members, Gr
 from django.core.cache import cache
 from .forms import CreateGroupForm, CreateChapelForm
 import json
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
 # list members oredered by chapel
+# @login_required(login_url='accounts:login_user')
 def index_page(request):
     memcounts = Members.objects.all().count()
     groupcount = Groups.objects.all().count()
@@ -38,6 +40,7 @@ def memberindex(request):
 
 # chapel=chapel_page, availabe=True
 
+# @login_required(login_url='accounts:login_user')
 def list_view_member(request):
     memlist = Members.objects.all().select_related('chapel', 'group')
     # groud = DBUser.objects.filter(group__id=Members.group)
