@@ -1,3 +1,5 @@
+import email
+
 from django.shortcuts import render, redirect
 from .forms import *
 from django.views.decorators.csrf import csrf_exempt, csrf_protect
@@ -8,48 +10,26 @@ from django.urls import reverse_lazy
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib import messages
 
-# # Create your views here.
-# def login_request(request):
-#     if request.method == 'POST':
-#         form = CustomUserCreationForm(request=request, data=request.POST)
-#         if form.is_valid():
-#             email = form.cleaned_data.get('email')
-#             password = form.cleaned_data.get('password')
-#             user = authenticate(email=email, password=password)
-#             if user is not None:
-#                 login(request, user)
-#                 messages.info(request, f"You are now logged in as {email}")
-#                 return redirect('/')
-#             else:
-#                 messages.error(request, "Invalid username or password.")
-#         else:
-#             messages.error(request, "Invalid username or password.")
-#     form = CustomUserCreationForm()
-#     return render(request=request, template_name="accounts/login.html", context={"form": form})
-#
-
-def logout_user(request):
-    if request.method == "POST":
-        auth.logout(request)
-        return redirect('accounts:login_user')
-
 
 # @login_required(login_url='users:login')
 def register_user(request):
-    if request.method == 'POST':
-        form = CustomUserCreationForm(request.POST)
-        if form.is_valid():
-            form.save()
-            email = form.cleaned_data['email']
-            password = form.cleaned_data['password1']
-            user = authenticate(email=email, password=password)
-            login(request, user)
-
-            return redirect('ChurchDashboard:home_page')
+    if request.user.is_authenticated:
+        return redirect('ChurchDashboard:home_page')
     else:
-        form = CustomUserCreationForm()
-    context = {'form': form}
-    return render(request, 'accounts/signup.html', context)
+        if request.method == 'POST':
+            form = CustomUserCreationForm(request.POST)
+            if form.is_valid():
+                form.save()
+                user = form.cleaned_data.get('user')
+                messages.success(request, 'Accounts was created ' + str(user))
+                email = form.cleaned_data['email']
+                password = form.cleaned_data['password1']
+
+                return redirect('accounts:login_user')
+        else:
+            form = CustomUserCreationForm()
+        context = {'form': form}
+        return render(request, 'accounts/signup.html', context)
 
 
 def edit_user(request):
@@ -64,48 +44,26 @@ def edit_user(request):
     return render(request, 'accounts/update.html', context)
 
 
-
-def login_user(request):
-    if request.method == 'POST':
-        email = request.POST.get('email')
-        password = request.POST.get('password')
-        user = authenticate(request, email=email, password=password)
-        if user is not None:
-            request.session['pk'] = user.pk
-            return redirect('users:verify')
-
-        if 'next' in request.POST:
-            return redirect(request.POST.get('next'))
-        else:
-            return render(request, "login.html", {})
-    return render(request, "login.html", {})
-
-
-
-
-
-
-def Logout(request):
-    """logout logged in user"""
+def LogoutUser(request):
     logout(request)
-    return HttpResponseRedirect(reverse_lazy('custom_auth:dashboard'))
+    return redirect('accounts:login_user')
 
 
+@csrf_exempt
+def loginPage(request):
+    if request.user.is_authenticated:
+        return redirect('ChurchDashboard:home_page')
+    else:
+        if request.method == 'POST':
+            email = request.POST.get('email')
+            password = request.POST.get('password')
 
-def user_login(request):
-    if request.method == 'GET':
-        context = ''
-        return render(request, 'accounts/login.html', {'context': context})
+            user = authenticate(email=email, password=password)
+            if user is not None:
+                login(request, user)
+                return redirect('ChurchDashboard:home_page')
+            else:
+                messages.info(request, 'Email or Password is not correct')
 
-    elif request.method == 'POST':
-        username = request.POST.get('email', '')
-        password = request.POST.get('password', '')
-
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
-            login(request, user)
-            # Redirect to a success page?
-            return redirect('/')
-        else:
-            context = {'error': 'Wrong credintials'}  # to display error?
-            return render(request, 'accounts/login.html', {'context': context})
+        context = {}
+        return render(request, 'accounts/login.html', context)

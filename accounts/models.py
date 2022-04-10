@@ -35,7 +35,6 @@ GENDER_CHOICES = (
 
 class UserAccounts(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(unique=True)
-    username = models.CharField(max_length=15)
     last_name = models.CharField(max_length=50, blank=True)
     first_name = models.CharField(max_length=50, blank=True)
     photo = models.ImageField(blank=True, upload_to='profile_image/&Y/&m/&d/')
@@ -48,12 +47,11 @@ class UserAccounts(AbstractBaseUser, PermissionsMixin):
     is_staff = models.BooleanField(default=False)
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['username']
 
     objects = UserManager()
 
     def __str__(self):
-        return self.username + " || " + self.email
+        return self.last_name + " || " + self.email
 
     def has_module_perms(self, app_label):
         return self.is_superuser

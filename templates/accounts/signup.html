@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{% block title %}{{ section.title }}{% endblock %}</title>
+  <title>CTAC | Register User</title>
     <link rel="shortcut icon" href="{% static 'dist/img/ctaclogo.png' %}">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <link rel="stylesheet" href="{% static 'plugins/fontawesome-free/css/all.min.css' %}">
@@ -24,14 +24,6 @@
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
-            </div>
-          </div>
-        </div>
-         <div class="input-group mb-3">
-         {{ form.username }}
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-user"></span>
             </div>
           </div>
         </div>
@@ -57,6 +49,7 @@
           </div>
         </div>
       </form>
+        {{ form.errors }}
       <a href="{% url 'accounts:login_user' %}" class="text-center">I already have a membership</a>
     </div>
   </div>
@@ -68,9 +61,8 @@
 <script>
     var form_fields = document.getElementsByTagName('input')
     form_fields[1].placeholder='Email';
-    form_fields[2].placeholder='Username';
-    form_fields[3].placeholder='Enter Password';
-    form_fields[4].placeholder='Re- Enter Password';
+    form_fields[2].placeholder='Enter Password';
+    form_fields[3].placeholder='Re- Enter Password';
 
     for (var field in form_fields){
         form_fields[field].className += ' form-control'
