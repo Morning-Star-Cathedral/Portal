@@ -15,7 +15,8 @@
 <div class="register-box">
   <div class="card card-outline card-primary">
     <div class="card-body">
-      <p class="login-box-msg">Register a new membership</p>
+       <img src="{% static 'dist/img/ctaclogo.png' %}" alt="CTAC Logo"
+                     class="brand-image img-circle elevation-3" style="opacity: .8">
 
       <form method="POST" action="">
             {% csrf_token %}
@@ -23,7 +24,7 @@
           {{ form.email }}
           <div class="input-group-append">
             <div class="input-group-text">
-              <span class="fas fa-envelope"></span>
+              <span class="fas fa-envelope"></span  >
             </div>
           </div>
         </div>
