@@ -7,16 +7,16 @@ from django.utils.safestring import mark_safe
 # Create your models here.
 
 class UserManager(BaseUserManager):
-    def create_user(self, email, username, password, **other_fields):
+    def create_user(self, email,  password, **other_fields):
         if not email:
             raise ValueError(_('Please provide an email address'))
         email = self.normalize_email(email)
-        user = self.model(email=email, username=username, **other_fields)
+        user = self.model(email=email, **other_fields)
         user.set_password(password)
         user.save()
         return user
 
-    def create_superuser(self, email, username, password, **other_fields):
+    def create_superuser(self, email, password, **other_fields):
         other_fields.setdefault('is_staff', True)
         other_fields.setdefault('is_superuser', True)
         other_fields.setdefault('is_active', True)
@@ -24,7 +24,7 @@ class UserManager(BaseUserManager):
             raise ValueError(_('Please assign is_staff=True for superuser'))
         if other_fields.get('is_superuser') is not True:
             raise ValueError(_('Please assign is_superuser=True for superuser'))
-        return self.create_user(email, username, password, **other_fields)
+        return self.create_user(email,  password, **other_fields)
 
 
 GENDER_CHOICES = (
@@ -47,6 +47,7 @@ class UserAccounts(AbstractBaseUser, PermissionsMixin):
     is_staff = models.BooleanField(default=False)
 
     USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['last_name']
 
     objects = UserManager()
 
