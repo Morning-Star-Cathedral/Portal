@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 import os
 from pathlib import Path
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -76,9 +77,9 @@ WSGI_APPLICATION = 'djangoProject14.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'lci_ctac',
-        'USER': 'root',
-        'PASSWORD': '',
+        'NAME':  'lci_ctac',
+        'USER':  'root',
+        'PASSWORD':'',
         'HOST': 'localhost',
         'PORT': '3306',
         'OPTIONS': {
