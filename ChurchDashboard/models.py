@@ -194,3 +194,6 @@ class AttendanceSummaries(models.Model):
         verbose_name = 'attendance_summary'
         verbose_name_plural = 'attendance_summaries'
         db_table = 'attendance_summaries'
+
+
+
