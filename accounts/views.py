@@ -44,7 +44,7 @@ def edit_user(request):
     return render(request, 'accounts/update.html', context)
 
 
-@login_required(login_url='login_user')
+
 def LogoutUser(request):
     logout(request)
     return redirect('accounts:login_user')
