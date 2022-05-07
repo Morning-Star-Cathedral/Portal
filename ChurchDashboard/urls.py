@@ -21,5 +21,5 @@ urlpatterns = [
     # path('dbuserlistindex/', db_userindex, name='mems'),
     path('groups/<int:pk>/delete', group_delete, name='delete_group'),
     path('groups/<int:pk>/delete', dbuser_delete, name='delete_group_head'),
-
+    path('add_member/', create_members, name='new_member'),
 ]

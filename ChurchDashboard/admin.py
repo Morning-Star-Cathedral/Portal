@@ -11,6 +11,8 @@ admin.site.index_title = "CTAC PastCare admin"
 
 admin.site.unregister(Group)
 
+class CTACAdminArea(admin.AdminSite):
+    site_header = "CTAC PastCare admin"
 
 # Register your models here.
 @admin.register(UserAccounts)

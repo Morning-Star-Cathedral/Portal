@@ -1,7 +1,7 @@
 from django.shortcuts import get_object_or_404, render, redirect
 from ChurchDashboard.models import AttendanceSummaries, Attendances, Members, Groups, Chapels, DBUser
 from django.core.cache import cache
-from .forms import CreateGroupForm, CreateChapelForm
+from .forms import CreateGroupForm, CreateChapelForm, CreateMemberForm
 import json
 from django.contrib.auth.decorators import login_required
 
@@ -213,6 +213,17 @@ def create_view_group(request):
     context['groupcreate'] = groupcreate
     return render(request, "groups/create.html", context)
 
+
+#members create
+def create_members(request):
+    context = {}
+    mem_create = CreateMemberForm(request.POST or None)
+    if mem_create.is_valid():
+        mem_create.save()
+        return redirect('ChurchDashboard:list_member_url')
+
+    context['mem_create'] =mem_create
+    return render(request, "member/create.html", context)
 
 # def group_delete(request, pk):
 #     delete_group = get_object_or_404(Groups, pk=pk)

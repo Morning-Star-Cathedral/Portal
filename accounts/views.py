@@ -44,7 +44,6 @@ def edit_user(request):
     return render(request, 'accounts/update.html', context)
 
 
-
 def LogoutUser(request):
     logout(request)
     return redirect('accounts:login_user')
@@ -110,11 +109,10 @@ def loginPage(request):
 
 
 def login_user(request):
-
     email = password = ''
     email = request.POST['email']
     password = request.POST['password']
-    user = authenticate(email=email, password = password)
+    user = authenticate(email=email, password=password)
     if user is not None:
         if user.is_active:
             login(request, user)
@@ -122,18 +120,17 @@ def login_user(request):
     return render(request, 'accounts/login.html')
 
 
-def login_view(request,*args,**kwargs):
-    context= {}
+def login_view(request, *args, **kwargs):
+    context = {}
     user = request.user
     if user.is_authenticated:
         return redirect('ChurchDashboard:home_page')
-
 
     if request.POST:
         form = AccountAuthenticationForm(request.POST)
         if form.is_valid():
             email = request.POST['email']
-            password =request.POST['password']
+            password = request.POST['password']
             user = authenticate(email=email, password=password)
             if user:
                 login(request, user)
@@ -143,11 +140,11 @@ def login_view(request,*args,**kwargs):
                 return redirect('ChurchDashboard:home_page')
         else:
             context['login_form'] = form
-    return render(request,'accounts/login.html', context)
+    return render(request, 'accounts/login.html', context)
 
 
 def get_redirect_if_exists(request):
-    redirect =None
+    redirect = None
     if request.GET:
         if request.GET.get('next'):
             redirect = str(request.GET.get('next'))
