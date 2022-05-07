@@ -46,15 +46,24 @@
               </label>
             </div>
           </div>
+           {% for field in login_form %}
+               <p>
+               {% for error in field.errors %}
+                   <p style="color: red"> {{ error }}</p>
+                   {% endfor %}
+               </p>
+               {% endfor %}
+              {% if login_form.non_field_errors %}
+                  <div style="color: red">
+                  <p>{{ login_form.non_field_errors }}</p>
+                  </div>
 
+            {% endif %}
           <div class="col-4">
             <button type="submit" class="btn btn-primary btn-block">Sign In</button>
           </div>
 
-            {% for message in messages %}
-                <p id="messages"> {{ message }}</p>
 
-            {% endfor %}
 
         </div>
       </form>
