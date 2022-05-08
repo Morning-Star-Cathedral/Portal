@@ -26,7 +26,7 @@ def index_page(request):
     }
     return render(request, 'index.html', context)
 
-
+@login_required(login_url='accounts:login_user')
 def memberindex(request):
     mil = Members.objects.all().order_by('-id')[:5].select_related('group', 'chapel')
     # nil = DBUser.objects.filter(group__id = Members.group)
@@ -62,6 +62,7 @@ def list_view_member(request):
 
 # list attendance ordered by created at
 # Ruben should look at the data being passed to service date ie am receiving a char instead of a date field
+@login_required(login_url='accounts:login_user')
 def list_view_attendance(request):
     read = Attendances.objects.all().order_by('service_date').select_related('member')
     context = {
@@ -72,6 +73,7 @@ def list_view_attendance(request):
 
 
 # attendance summary list ordered by created at asecending
+@login_required(login_url='accounts:login_user')
 def attendance_summmaries_list(request):
     att_summary = AttendanceSummaries.objects.all().order_by('attendance_date').select_related('group')
     context = {
@@ -81,6 +83,7 @@ def attendance_summmaries_list(request):
 
 
 # group list
+@login_required(login_url='accounts:login_user')
 def groups_list(request):
     gro = Groups.objects.all()
     # userlist = DBUser.objects.filter(group__id=gro.id)
@@ -92,6 +95,7 @@ def groups_list(request):
 
 
 # chapels list
+@login_required(login_url='accounts:login_user')
 def chapel_list(request):
     chaps = Chapels.objects.all()
     context = {
@@ -101,6 +105,7 @@ def chapel_list(request):
 
 
 # DB USer list
+@login_required(login_url='accounts:login_user')
 def db_user_list(request):
     db_user = DBUser.objects.all().order_by('created_at').select_related('group', 'chapel')
     context = {
@@ -110,7 +115,7 @@ def db_user_list(request):
 
 
 # Details View Members
-
+@login_required(login_url='accounts:login_user')
 def members_details(request, pk):
     if cache.get(pk):
         print('cache working')
@@ -129,6 +134,7 @@ def members_details(request, pk):
 
 
 # Details View Chapels
+@login_required(login_url='accounts:login_user')
 def chap_details(request, id):
     db_users = DBUser.objects.filter(chapel__id=id)
     dbuser_count = DBUser.objects.filter(chapel__id=id).count()
@@ -158,6 +164,7 @@ def chap_details(request, id):
 
 
 # Details View group
+@login_required(login_url='accounts:login_user')
 def groups_details(request, pk):
     userlist = DBUser.objects.filter(group__id=pk)
     gro_membs_count = Members.objects.filter(group__id=pk).count()
@@ -201,8 +208,8 @@ def groups_details(request, pk):
 #         # 'mens': mens
 #     }
 #     return render(request, 'DbUser/details.html', context)
-
-
+# create views
+@login_required(login_url='accounts:login_user')
 def create_view_group(request):
     context = {}
     groupcreate = CreateGroupForm(request.POST or None)
@@ -214,7 +221,8 @@ def create_view_group(request):
     return render(request, "groups/create.html", context)
 
 
-#members create
+# member creation
+@login_required(login_url='accounts:login_user')
 def create_members(request):
     context = {}
     mem_create = CreateMemberForm(request.POST or None)
@@ -222,8 +230,9 @@ def create_members(request):
         mem_create.save()
         return redirect('ChurchDashboard:list_member_url')
 
-    context['mem_create'] =mem_create
+    context['mem_create'] = mem_create
     return render(request, "member/create.html", context)
+
 
 # def group_delete(request, pk):
 #     delete_group = get_object_or_404(Groups, pk=pk)
@@ -232,7 +241,7 @@ def create_members(request):
 #         return redirect('ChurchDashboard:list_group_url')
 #     return render(request, 'groups/delete.html', context={})
 
-
+@login_required(login_url='accounts:login_user')
 def create_chapel(request):
     context = {
 
@@ -245,6 +254,7 @@ def create_chapel(request):
     return render(request, 'chapels/add.html', context)
 
 
+@login_required(login_url='accounts:login_user')
 def group_delete(request, pk):
     delete_group = get_object_or_404(Groups, pk=pk)
     if request.method == "POST":
@@ -254,6 +264,7 @@ def group_delete(request, pk):
     return render(request, 'groups/delete.html', context)
 
 
+@login_required(login_url='accounts:login_user')
 def dbuser_delete(request, id):
     delete_group = get_object_or_404(Groups, id=id)
     if request.method == "POST":

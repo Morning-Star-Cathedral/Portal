@@ -119,7 +119,7 @@ def login_user(request):
             return redirect('ChurchDashboard:home_page')
     return render(request, 'accounts/login.html')
 
-
+@csrf_exempt
 def login_view(request, *args, **kwargs):
     context = {}
     user = request.user
