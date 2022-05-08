@@ -18,7 +18,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12">
-                        <div class="card">
+{#                        <div class="card">#}
                             <div class="card">
                                 <div class="card-body">
                                     <table id="example1" class="table table-bordered table-striped">
@@ -29,24 +29,29 @@
                                             <th>LAST NAME</th>
                                             <th>PHONE NUMBER</th>
                                             <th> CHAPEL NAME</th>
-                                            <th> PC GROUP </th>
+                                            <th> PC GROUP</th>
 
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        {%  for memlist in memlist %}
-                                        <tr>
-                                            <td>{{ memlist.id }}</td>
-                                            <td>{{ memlist.first_name }}</td>
-                                            <td><a href="{% url 'ChurchDashboard:details_member_urls' memlist.id %}" class="link-black" >{{ memlist.last_name}}</a></td>
-                                            <td>{{ memlist.phone_number }}</td>
-                                            <td>{{ memlist.chapel }}</td>
-                                            <td>{{ memlist.group }}</td>
-                                        </tr>
+                                        {% for memlist in memlist %}
+                                            <tr>
+                                                <td>{{ memlist.id }}</td>
+                                                <td>{{ memlist.first_name }}</td>
+                                                <td><a href="{% url 'ChurchDashboard:details_member_urls' memlist.id %}"
+                                                       class="link-black">{{ memlist.last_name }}</a></td>
+                                                <td>{{ memlist.phone_number }}</td>
+                                                <td>{{ memlist.chapel }}</td>
+                                                <td>{{ memlist.group }}</td>
+                                            </tr>
                                         {% endfor %}
 
                                         </tfoot>
                                     </table>
+                                    <div class="card-footer clearfix">
+                                        <a href="{% url 'ChurchDashboard:add_member_url' %}"
+                                           class="btn btn-sm btn-info float-left">Add Member</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -116,21 +116,15 @@
                       placeholder="21/02/2000">
                   </div>
                     <div class="form-group">
-                    <label>Chapel </label>
-                    <input
-                      type='text'
-                      name='chapel'
-                      class="form-control"
-                      placeholder="Proverbs">
-                  </div>
-                    <div class="form-group">
-                    <label>Group </label>
-                    <input
-                      type='text'
-                      name='group'
-                      class="form-control"
-                      placeholder="21/02/2000">
-                  </div>
+                         <label>Select PC Group</label><br>
+                    {{ mem_create.group }}<br>
+                        &nbsp;<br>
+                         <label>Select Chapel</label><br>
+                    {{ mem_create.chapel }}
+                    </div>
+
+
+
                   <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
               </div>
