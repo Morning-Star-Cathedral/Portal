@@ -18,7 +18,11 @@ class CreateChapelForm(forms.ModelForm):
         )
 
 
-# class CreateMemberForm(forms.ModelForm):
-#     class Meta:
-#         model = Members
-#         feilds = ('_all_')
+class CreateMemberForm(forms.ModelForm):
+    class Meta:
+        model = Members
+        fields = (
+            'first_name', 'last_name', 'other_name', 'title',
+            'sex', 'chapel', 'group', 'dob', 'phone_number', 'whatsapp_number',
+            'other_phone_number', 'area_of_residence', 'gps_address',
+        )

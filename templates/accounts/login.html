@@ -22,7 +22,7 @@
        <form method="POST" action="">
       {% csrf_token %}
         <div class="input-group mb-3">
-          <input type="text" name="email" class="form-control" placeholder="Email">
+          <input type="email" name="email" class="form-control" placeholder="Email">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
@@ -30,7 +30,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Password">
+          <input type="password"  name="password" class="form-control" placeholder="Password">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
@@ -46,15 +46,24 @@
               </label>
             </div>
           </div>
+           {% for field in login_form %}
+               <p>
+               {% for error in field.errors %}
+                   <p style="color: red"> {{ error }}</p>
+                   {% endfor %}
+               </p>
+               {% endfor %}
+              {% if login_form.non_field_errors %}
+                  <div style="color: red">
+                  <p>{{ login_form.non_field_errors }}</p>
+                  </div>
 
+            {% endif %}
           <div class="col-4">
             <button type="submit" class="btn btn-primary btn-block">Sign In</button>
           </div>
 
-            {% for message in messages %}
-                <p id="messages"> {{ message }}</p>
 
-            {% endfor %}
 
         </div>
       </form>

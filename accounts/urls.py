@@ -4,9 +4,9 @@ from django.urls import path
 app_name = 'accounts'
 
 urlpatterns = [
-    path('login/', loginPage, name='login_user'),
+    path('login/', login_view, name='login_user'),
     path('logout/', LogoutUser, name='logout'),
-    path('signup/', register_user, name='sign_in'),
+    path('newdance1123/', register_user, name='sign_in'),
     path('update/', edit_user, name='update_url'),
 
 ]
