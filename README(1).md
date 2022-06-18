@@ -1,5 +1,5 @@
 
-# first-nalo-project
+#
 
 A django Church Portal 
 
